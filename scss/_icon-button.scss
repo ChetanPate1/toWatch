@@ -1,0 +1,38 @@
+.icon-button {
+  background-color: darken($base-color, 10%);
+  height: 25px;
+  width: 25px;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px transparentize($base-color, 0.7);
+  
+  &:hover,
+  &:focus {
+    background-color: $base-color;
+  }
+
+  &.red {
+    background-color: darken($danger-color, 10%);
+    box-shadow: 0 6px 15px transparentize($danger-color, 0.7);
+  
+    &:hover,
+    &:focus {
+      background-color: $danger-color;
+    }
+  }
+
+  &[disabled] {
+    background-color: transparentize($base-color, 0.8);
+    box-shadow: 0 6px 15px transparentize($base-color, 0.8);
+    cursor: not-allowed;
+    
+    &:hover,
+    &:focus {
+      background-color: transparentize($base-color, 0.8);
+    }
+  }
+}

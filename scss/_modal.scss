@@ -1,0 +1,9 @@
+.modal {
+  z-index: 1300;
+}
+
+@media (min-width: 768px) {
+  .modal-md {
+      width: 500px;
+  }
+}
