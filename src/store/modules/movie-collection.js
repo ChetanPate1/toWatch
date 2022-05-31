@@ -46,7 +46,7 @@ const actions = {
   },
   async saveToMovieCollectionMovie({ commit, dispatch }, movie) {
     try {
-      const posterUrl = movie.Poster.substring(0, movie.Poster.length - 7);
+      const posterUrl = movie.Poster.slice(0, movie.Poster.length - 7);
       const { data } = await axios({
         method: 'POST',
         url: '/movie-collections',
