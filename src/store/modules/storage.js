@@ -7,7 +7,7 @@ function initialState() {
   };
 }
 
-const state = initialState();
+const state = () => initialState();
 
 const getters = {};
 

@@ -2,7 +2,7 @@ import axios from '../../http';
 
 import router from '@/router';
 
-const state = {};
+const state = () => ({});
 
 const getters = {};
 
@@ -26,8 +26,8 @@ const actions = {
       }, { root: true });
 
       router.push({ name: 'watching' });
-    } catch ({ data }) {
-      dispatch('showToast', { title: 'Error', message: data.message }, { root: true });
+    } catch (e) {
+      dispatch('showToast', { title: 'Error', message: e.message }, { root: true });
     }
   },
   async signUserOut({ dispatch }) {
@@ -44,9 +44,9 @@ const actions = {
 
       router.push({ name: 'login' });
       dispatch('showToast', { title: 'Registered', message: data.message }, { root: true });
-    } catch ({ data }) {
+    } catch (e) {
       router.push({ name: 'login' });
-      dispatch('showToast', { title: 'Error', message: data.message }, { root: true });
+      dispatch('showToast', { title: 'Error', message: e.message }, { root: true });
     }
   },
   async verifyEmail({ dispatch }, token) {

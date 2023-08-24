@@ -4,10 +4,10 @@ import {
   SHOW_EPISODES_TAGS_GET,
   SHOWS_RESET } from '../mutation-types';
 
-const state = {
+const state = () => ({
   showsFound: [],
   showEpisodesTags: []
-};
+});
 
 const getters = {};
 

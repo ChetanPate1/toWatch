@@ -1,0 +1,21 @@
+<script>
+export default {
+  name: 'TwFormField',
+  emits: ['update:modelValue'],
+  props: {
+    modelValue: String,
+    type: {
+      default: 'text',
+      type: String
+    },
+    id: String
+  }
+};
+</script>
+
+<template>
+  <input :id="id" :name="id" :type="type"
+    class="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 sm:text-sm text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+    :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" />
+</template>
+

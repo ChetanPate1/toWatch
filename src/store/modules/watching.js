@@ -10,13 +10,13 @@ import {
   WATCHING_GET_TAG,
   WATCHING_REQUESTING } from '../mutation-types';
 
-const state = {
+const state = () => ({
   watching: [],
   currentPage: 1,
   requesting: false,
   totalPages: 10,
   pageSize: 8
-};
+});
 
 const getters = {};
 
@@ -34,7 +34,7 @@ const actions = {
           currentPage
         }
       });
-
+      
       if (currentPage === 1) {
         commit(WATCHING_REQUESTING, false);
         return commit(WATCHING_SET, res.data);

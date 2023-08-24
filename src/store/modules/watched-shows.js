@@ -5,14 +5,14 @@ import {
   WATCHED_SHOWS_GET,
   WATCHED_SHOWS_DELETE } from '../mutation-types';
 
-const state = {
+const state = () => ({
   filter: { sort: 'Collection' },
   currentPage: 1,
   watchedShows: [],
   requesting: false,
   totalPages: 10,
   pageSize: 15
-};
+});
 
 const getters = {};
 

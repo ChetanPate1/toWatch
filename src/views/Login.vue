@@ -1,38 +1,35 @@
-<template lang="html">
-  <div class="container">
-    <div class="col-md-offset-4 col-md-4">
-      <card>
-        <h2>Sign in</h2>
-
-        <form name="signinForm" novalidate>
-          <div class="form-element dark">
-            <label for="email">Email</label>
-            <input name="email" type="email" v-model="form.email" required>
-          </div>
-
-          <div class="form-element dark">
-            <label for="password">Password</label>
-            <button class="forgot-password" type="button" @click="$router.push({ name: 'forgotPassword' })">Forgotten your password?</button>
-            <input name="password" type="password" v-model="form.password" required>
-          </div>
-
-          <div class="row margin-top-50">
-            <!-- <div class="col-xs-6">
-            <uiv-btn type="ghost" @click="$router.push({ name: 'register' })">Register</uiv-btn>
-          </div> -->
-
-          <div class="col-xs-12 text-right">
-            <uiv-btn type="primary" @click="onLogin">Sign in</uiv-btn>
-          </div>
+<template>
+  <div class="grid place-items-center h-screen">
+    <tw-card class="w-screen text-left">
+      <h2 class="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+   
+      <form name="signinForm" novalidate>
+        <div class="mb-4">
+          <tw-form-label id="email">Email</tw-form-label>
+          <tw-form-field id="email" v-model="form.email"></tw-form-field>
         </div>
+  
+        <div class="mb-4">
+          <div class="grid grid-cols-2">
+            <tw-form-label id="password">Password</tw-form-label>
+            <button class="text-right text-xs hover:text-indigo-600" type="button"
+              @click="$router.push({ name: 'forgotPassword' })">Forgotten your password?</button>
+          </div>
+          <tw-form-field id="password" v-model="form.password"></tw-form-field>
+        </div>
+  
+        <tw-button type="button" @click="onLogin" class="w-full mt-7">Sign in</tw-button>
       </form>
-    </card>
+    </tw-card>
   </div>
-</div>
 </template>
 
 <script>
-import Card from '@/components/Card/Card';
+import TwCard from '@/components/TwCard';
+import TwFormLabel from '@/components/TwFormLabel.vue';
+import TwFormField from '@/components/TwFormField.vue';
+import TwButton from '@/components/TwButton';
+
 import { mapState } from 'vuex';
 
 export default {
@@ -53,7 +50,7 @@ export default {
   mounted() {
     const { token } = this.$route.params;
 
-    if(token) {
+    if (token) {
       this.$store.dispatch('auth/verifyEmail', token);
     }
   },
@@ -63,22 +60,10 @@ export default {
     }
   },
   components: {
-    Card
+    TwCard,
+    TwFormLabel,
+    TwFormField,
+    TwButton
   }
 }
 </script>
-
-<style lang="scss" scoped>
-h2{
-  color: #ffffff;
-}
-
-.forgot-password {
-  position: absolute;
-  right: 0;
-  bottom: -24px;
-  background: transparent;
-  border: none;
-  color: #5d5d61;
-}
-</style>

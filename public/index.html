@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 
 <head>
   <meta charset="utf-8">
@@ -7,13 +7,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel=stylesheet>
-  <title>toWatch</title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
 </head>
 
 <body>
   <noscript>
-    <strong>We're sorry but towatch doesn't work properly without JavaScript enabled. Please enable it to
-      continue.</strong>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->

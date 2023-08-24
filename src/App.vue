@@ -1,31 +1,22 @@
-<template>
-  <div id="app">
-    <toasts></toasts>
+<script>
+import TwNavigationBar from '@/components/TwNavigationBar';
+export default {
+  async mounted() {
+    await this.$store.dispatch('storage/initialiseStore');
+  },
+  components: {
+    TwNavigationBar
+  }
+}
+</script>
 
-    <navigation-bar></navigation-bar>
+<template>
+  <tw-navigation-bar></tw-navigation-bar>
+  <div class="pt-[80px]">
     <router-view />
   </div>
 </template>
 
-<script>
-import NavigationBar from './components/NavigationBar/NavigationBar';
-import Toasts from './components/Toasts/Toasts';
+<style>
 
-import { mapGetters } from 'vuex';
-
-export default {
-  name: 'app',
-  async mounted() {
-    await this.$store.dispatch('storage/initialiseStore');
-  },
-  computed: {
-    ...mapGetters(['toasts'])
-  },
-  components: {
-    NavigationBar,
-    Toasts
-  }
-};
-</script>
-
-<style src="../scss/main.scss" lang="scss"></style>
+</style>

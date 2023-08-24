@@ -1,12 +1,12 @@
 import axios from '../../http';
 import { SEASONS_GET, EPISODES_GET, EPISODE_TAGS_GET, SHOW_TYPES_GET } from '../mutation-types';
 
-const state = {
+const state = () => ({
   seasons: [],
   episodes: [],
   episodeTags: [],
   showTypes: []
-};
+});
 
 const getters = {};
 

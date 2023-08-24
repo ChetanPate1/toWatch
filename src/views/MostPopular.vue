@@ -1,19 +1,7 @@
-<template lang="html">
-  <div class="container-fluid fade-in">
-    <div class="row show-layout">
-        <div class="col-xs-6 col-sm-3 col-md-2" v-for="show in limit(shows, 18)" :key="show.id">
-          <show-card
-            :heading="show.name"
-            :img-src="show.image_thumbnail_path"
-            :deleteable="false">
-          </show-card>
-      </div>
-    </div>
-  </div>
-</template>
 
 <script>
-import ShowCard from '@/components/ShowCard/ShowCard';
+import TwContainer from '@/components/TwContainer';
+import TwShowCard from '@/components/TwShowCard';
 import { mapState } from 'vuex';
 
 export default {
@@ -26,13 +14,22 @@ export default {
   mounted() {
     this.$store.dispatch('mostPopular/getMostPopularShows');
   },
-  methods: {
-    limit(array, limit) {
-      return array.slice(0, limit);
-    }
-  },
   components: {
-    ShowCard
+    TwContainer,
+    TwShowCard
   }
 };
 </script>
+
+<template>
+  <tw-container>
+    <div class="grid grid-cols-7 gap-4">
+      <tw-show-card 
+        v-for="show in shows" 
+        :key="show.id" 
+        :name="show.name" 
+        :image="show.image_thumbnail_path" 
+      />
+    </div>
+  </tw-container>
+</template>

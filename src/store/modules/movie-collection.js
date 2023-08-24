@@ -6,13 +6,13 @@ import {
   MOVIE_COLLECTION_DELETE,
   MOVIE_COLLECTION_REQUESTING } from '../mutation-types';
 
-const state = {
+const state = () => ({
   collection: [],
   currentPage: 1,
   requesting: false,
   totalPages: 10,
   pageSize: 15
-};
+});
 
 const getters = {};
 

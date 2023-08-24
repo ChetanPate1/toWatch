@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { SET_MOST_POPULAR_SHOWS } from '../mutation-types';
 
-const state = {
+const state = () => ({
   shows: []
-};
+});
 
 const getters = {};
 

@@ -1,8 +1,8 @@
 import { TOAST_MESSAGE, TOAST_DISMISS } from '../mutation-types';
 
-const state = {
+const state = () => ({
   toasts: []
-};
+});
 
 const getters = {
   toasts: state => state.toasts

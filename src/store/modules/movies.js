@@ -4,10 +4,10 @@ import {
   MOVIE_GET,
   MOVIE_RESET } from '../mutation-types';
 
-const state = {
+const state = () => ({
   movieDetails: {},
   moviesFound: []
-};
+});
 
 const getters = {};
 

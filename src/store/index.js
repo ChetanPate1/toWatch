@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { createStore, createLogger } from 'vuex';
 import auth from './modules/auth';
 import mostPopular from './modules/most-popular';
 import shows from './modules/shows';
@@ -11,9 +10,9 @@ import lookups from './modules/lookups';
 import toast from './modules/toast';
 import storage from './modules/storage';
 
-Vue.use(Vuex);
+const debug = process.env.NODE_ENV !== 'production';
 
-export default new Vuex.Store({
+export default createStore({
   modules: {
     auth,
     mostPopular,
@@ -25,5 +24,7 @@ export default new Vuex.Store({
     lookups,
     toast,
     storage
-  }
-});
+  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
+})
