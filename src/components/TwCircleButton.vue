@@ -1,5 +1,5 @@
 <script>
-import { PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon } from '@heroicons/vue/24/outline';
+import { PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon, EyeIcon } from '@heroicons/vue/24/outline';
 
 export default {
   props: {
@@ -50,7 +50,11 @@ export default {
     }
   },
   components: {
-    PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon
+    PlusIcon, 
+    ArrowPathIcon, 
+    TrashIcon, 
+    PlayIcon,
+    EyeIcon
   }
 };
 </script>
@@ -62,6 +66,7 @@ export default {
     <TrashIcon :class="size == 'md' ? 'h-6 w-6' : 'h-4 w-4'" aria-hidden="true" v-if="type == 'trash'" />
     <PlayIcon :class="size == 'md' ? 'h-6 w-6' : 'h-4 w-4'" aria-hidden="true" v-if="type == 'play'" />
     <ArrowPathIcon :class="size == 'md' ? 'h-6 w-6' : 'h-4 w-4'" aria-hidden="true" v-if="type == 'reload'" />
+    <EyeIcon :class="size == 'md' ? 'h-6 w-6' : 'h-4 w-4'" aria-hidden="true" v-if="type == 'eye'" />
   </button>
 </template>
 

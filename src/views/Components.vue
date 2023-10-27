@@ -3,19 +3,22 @@
     <div class="grid grid-cols-4 gap-4">
       <div>
         <h3 class="text-2xl mb-3">Card</h3>
-        <tw-card class="mb-2">
+        <tw-card class="mb-5">
           tw-card
         </tw-card>
 
 
-        <tw-movie-card class="mb-2" name="Wednesday"
+        <tw-movie-card class="mb-5" name="Wednesday"
           image="https://static.tvmaze.com/uploads/images/medium_portrait/433/1082578.jpg" />
 
-        <tw-watched-card class="mb-" name="Wednesday" episode-title="Chapter III: Friend or Woe"
+        <tw-watched-card class="mb-5" name="Wednesday" episode-title="Chapter III: Friend or Woe"
           on="Season 01 Episode 03" image="https://static.tvmaze.com/uploads/images/medium_portrait/433/1082578.jpg"
           @onDelete="" @onRewatch="" @onContinue="" />
 
-        <tw-watching-card name="Wednesday" episode-title="Chapter III: Friend or Woe" on="Season 01 Episode 03"
+        <tw-watching-card 
+          class="mb-5"
+          name="Wednesday" 
+          episode-title="Chapter III: Friend or Woe" on="Season 01 Episode 03"
           image="https://static.tvmaze.com/uploads/images/original_untouched/433/1082578.jpg" @onDelete="" @onRewatch=""
           @onContinue="" />
       </div>
