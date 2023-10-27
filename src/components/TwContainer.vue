@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div class="container pb-5">
+  <div class="pb-5">
     <slot></slot>
   </div>
 </template>
