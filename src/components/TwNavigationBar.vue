@@ -17,7 +17,7 @@ export default {
     ...mapState({
       token: ({ storage }) => storage.token,
       userInitial: ({ storage }) => {
-        return storage.user ? storage.user.email.charAt(0) : '-';
+        return storage.user ? storage.user.email?.charAt(0) : '-';
       }
     })
   },
@@ -63,7 +63,7 @@ export default {
           <div class="flex flex-shrink-0 items-center">
             <p class="text-white">toWatch</p>
           </div>
-          <div class="hidden sm:ml-6 sm:block">
+          <div class="hidden sm:ml-6 sm:block ">
             <div class="flex space-x-4">
               <router-link v-for="item in navigation" :to="item.to" tag="a" :key="item.name" v-if="token"
                 :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'inline-flex items-center px-3 py-2 rounded-md text-sm font-medium']"

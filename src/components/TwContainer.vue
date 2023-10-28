@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div class="pb-5">
+  <div class="mx-auto max-w-7xl px-3 mb-10">
     <slot></slot>
   </div>
 </template>

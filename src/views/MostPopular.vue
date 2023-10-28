@@ -1,4 +1,3 @@
-
 <script>
 import TwContainer from '@/components/TwContainer';
 import TwShowCard from '@/components/TwShowCard';
@@ -23,7 +22,7 @@ export default {
 
 <template>
   <tw-container>
-    <div class="grid grid-cols-7 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
       <tw-show-card 
         v-for="show in shows" 
         :key="show.id" 

@@ -21,8 +21,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: 'about' */ '../views/Login.vue'),
+    component: () => import(/* webpackChunkName: 'about' */ '../views/Login.vue'),
   },
   {
     path: '/most-popular',
@@ -30,8 +29,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (mostPopular.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: 'mostPopular' */ '../views/MostPopular.vue'),
+    component: () => import(/* webpackChunkName: 'mostPopular' */ '../views/MostPopular.vue'),
   },
   {
     path: '/watching',
@@ -39,9 +37,32 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (watching.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: 'watching' */ '../views/Watching.vue'),
-  }
+    component: () => import(/* webpackChunkName: 'watching' */ '../views/Watching.vue')
+  },
+  // {
+  //   path: '/watched-shows',
+  //   name: 'watchedShows',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (watching.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: 'watchedShows' */ '../views/WatchedShows.vue')
+  // },
+  // {
+  //   path: '/movie-collection',
+  //   name: 'movieCollection',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (watching.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: 'movieCollection' */ '../views/MovieCollection.vue')
+  // },
+  // {
+  //   path: '/movie-details/:movieId',
+  //   name: 'movieDetails',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (watching.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: 'movieDetails' */ '../views/MovieDetails.vue')
+  // }
 ];
 
 const router = createRouter({

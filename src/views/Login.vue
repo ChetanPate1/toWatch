@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mx-auto flex flex-col items-center w-full max-w-3xl mt-12 sm:mt-16">
+  <div class="relative mx-auto flex flex-col items-center w-full max-w-xl mt-12 sm:mt-16">
     <svg viewBox="0 0 1090 1090" aria-hidden="true" fill="none" preserveAspectRatio="none" width="1090" height="1090" class="absolute -top-7 left-1/2 -z-10 h-[788px] -translate-x-1/2 stroke-gray-300/30 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:-top-9 sm:h-auto">
       <circle cx="545" cy="545" r="544.5"></circle>
       <circle cx="545" cy="545" r="480.5"></circle>
