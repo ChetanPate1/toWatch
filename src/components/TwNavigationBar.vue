@@ -1,5 +1,5 @@
 <script>
-import { Bars3Icon, EyeIcon, FilmIcon, TvIcon, VideoCameraIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { mapState } from 'vuex';
 
@@ -7,9 +7,9 @@ export default {
   data() {
     return {
       navigation: [
-        { name: 'Movie Collection', to: '/movie-collection', current: false },
-        { name: 'Watched Shows', to: '/watched-shows', current: false },
-        { name: 'Watching', to: '/watching', current: false },
+        { name: 'Movie Collection', to: '/movie-collection', icon: 'movie', current: false },
+        { name: 'Watched Shows', to: '/watched-shows', icon: 'modern-tv', current: false },
+        { name: 'Watching', to: '/watching', icon: 'list-select', current: false },
       ]
     };
   },
@@ -36,93 +36,40 @@ export default {
     Menu,
     MenuButton,
     MenuItem,
-    MenuItems,
-    FilmIcon,
-    VideoCameraIcon,
-    TvIcon,
-    EyeIcon
+    MenuItems
   }
 };
 </script>
 
 <template>
-  <Disclosure as="nav" class="bg-gray-800 fixed top-0 left-0 right-0 w-full z-[9999]" v-slot="{ open }">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
-          <DisclosureButton
-            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-            <span class="sr-only">Open main menu</span>
-            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
-          </DisclosureButton>
-        </div>
+  <div class="flex flex-col justify-between fixed top-[5%] left-3 w-14 h-[90%] border-2 border-zinc-800 rounded-full bg-zinc-900" v-if="token">
+    <div class="flex flex-col item-center">
+      <div class="text-indigo-500 font-bold text-xl w-full text-center py-4 mb-2">2W</div>
 
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <div class="flex flex-shrink-0 items-center">
-            <p class="text-white">toWatch</p>
-          </div>
-          <div class="hidden sm:ml-6 sm:block ">
-            <div class="flex space-x-4">
-              <router-link v-for="item in navigation" :to="item.to" tag="a" :key="item.name" v-if="token"
-                :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'inline-flex items-center px-3 py-2 rounded-md text-sm font-medium']"
-                :aria-current="item.current ? 'page' : undefined">
-                {{ item.icon }}
-                <VideoCameraIcon class="-ml-1 mr-2 h-5 w-5" v-if="item.name == 'Movie Collection'" />
-                <TvIcon class="-ml-1 mr-2 h-5 w-5" v-if="item.name == 'Watched Shows'" />
-                <EyeIcon class="-ml-1 mr-2 h-5 w-5" v-if="item.name == 'Watching'" />
-                {{ item.name }}
-              </router-link>
-            </div>
-          </div>
-        </div>
-
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <!-- Profile dropdown -->
-          <Menu as="div" class="relative ml-3">
-            <div>
-              <MenuButton
-                class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                <span class="sr-only">Open user menu</span>
-                <span
-                  class="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-500">
-                  <span class="font-medium leading-none text-white uppercase" v-if="token">{{ userInitial }}</span>
-                  <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24" v-else>
-                    <path
-                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                </span>
-              </MenuButton>
-            </div>
-
-            <transition enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95">
-              <MenuItems
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <MenuItem v-slot="{ active }">
-                <a href="#" v-if="token" class="block px-4 py-2 text-sm text-gray-700">Sign Out</a>
-
-                <router-link to="/login" tag="a" v-else class="block px-4 py-2 text-sm text-gray-700">
-                  Login
-                </router-link>
-                </MenuItem>
-              </MenuItems>
-            </transition>
-          </Menu>
-        </div>
+      <div class="inline-flex h-10 w-10 text-sm items-center justify-center place-self-center text-white uppercase overflow-hidden border-2 border-zinc-800 rounded-full bg-zinc-900">
+        {{ userInitial }}
       </div>
     </div>
 
-    <DisclosurePanel class="sm:hidden">
-      <div class="space-y-1 px-2 pt-2 pb-3">
-        <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href"
-          :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']"
-          :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
-      </div>
-    </DisclosurePanel>
-  </Disclosure>
-</template>
+    <div class="flex flex-col">
+      <router-link
+        v-for="item in navigation"
+        :to="item.to" 
+        tag="a"
+        :key="item.name"
+        class="relative text-white text-center text-xl h-14 flex flex-row items-center justify-center my-2 group"
+        :aria-current="item.current ? 'page' : undefined">
+        <i :class="`iconoir-${item.icon}`"></i>
+        <span class="sr-only">{{ item.name }}</span>
+        <span class="absolute h-full w-1 rounded-full -right-[1px] bg-indigo-500 transition-transform duration-300 scale-y-0 group-hover:scale-y-100" :class="item.current ? '':''"></span>
+      </router-link>
+    </div>
 
+    <div>
+      <a href="#" class="relative h-14 flex flex-row items-center justify-center text-slate-500 hover:text-white text-center text-xl" @click="logout">
+        <i class="iconoir-eject"></i>
+        <span class="sr-only">Logout</span>
+      </a>
+    </div>
+  </div>
+</template>
