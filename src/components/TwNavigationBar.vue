@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between fixed top-[5%] left-3 w-14 h-[90%] border-2 border-zinc-800 rounded-full bg-zinc-900" v-if="token">
+  <div class="flex flex-col justify-between fixed z-50 top-[5%] left-3 w-14 h-[90%] border-2 border-zinc-800 rounded-full bg-zinc-900" v-if="token">
     <div class="flex flex-col item-center">
       <div class="text-indigo-500 font-bold text-xl w-full text-center py-4 mb-2">2W</div>
 
@@ -66,7 +66,7 @@ export default {
     </div>
 
     <div>
-      <a href="#" class="relative h-14 flex flex-row items-center justify-center text-slate-500 hover:text-white text-center text-xl" @click="logout">
+      <a href="#" class="relative h-14 flex flex-row items-center justify-center text-slate-500 hover:text-red-600 text-center text-xl" @click="logout">
         <i class="iconoir-eject"></i>
         <span class="sr-only">Logout</span>
       </a>
