@@ -65,11 +65,11 @@ export default {
       </router-link>
     </div>
 
-    <div>
-      <a href="#" class="relative h-14 flex flex-row items-center justify-center text-slate-500 hover:text-red-600 text-center text-xl" @click="logout">
+    <div class="flex flex-row items-center justify-center">
+      <button type="button" class="relative h-14 text-slate-500 hover:text-red-600 text-center text-xl" @click="logout">
         <i class="iconoir-eject"></i>
         <span class="sr-only">Logout</span>
-      </a>
+      </button>
     </div>
   </div>
 </template>
