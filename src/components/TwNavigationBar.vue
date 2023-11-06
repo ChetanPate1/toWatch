@@ -7,9 +7,9 @@ export default {
   data() {
     return {
       navigation: [
-        { name: 'Movie Collection', to: '/movie-collection', icon: 'movie', current: false },
-        { name: 'Watched Shows', to: '/watched-shows', icon: 'modern-tv', current: false },
-        { name: 'Watching', to: '/watching', icon: 'list-select', current: false },
+        { name: 'Movie Collection', to: '/movie-collection', icon: 'movie' },
+        { name: 'Watched Shows', to: '/watched-shows', icon: 'modern-tv' },
+        { name: 'Watching', to: '/watching', icon: 'list-select' }
       ]
     };
   },
@@ -19,7 +19,10 @@ export default {
       userInitial: ({ storage }) => {
         return storage.user ? storage.user.email?.charAt(0) : '-';
       }
-    })
+    }),
+    currentRoute() {
+      return this.$route.path;
+    }
   },
   methods: {
     logout() {
@@ -57,11 +60,11 @@ export default {
         :to="item.to" 
         tag="a"
         :key="item.name"
-        class="relative text-white text-center text-xl md:h-14 flex flex-row items-center justify-center mx-3 md:my-2 group"
-        :aria-current="item.current ? 'page' : undefined">
+        class="relative text-white text-center text-xl md:h-14 flex flex-row items-center justify-center mx-5 md:mx-0 md:my-2 group hover:text-indigo-500"
+        :aria-current="currentRoute == item.to ? 'page' : undefined">
         <i :class="`iconoir-${item.icon}`"></i>
         <span class="sr-only">{{ item.name }}</span>
-        <span class="absolute h-1 w-full sm:h-full sm:w-1 rounded-full top-0 sm:-right-[1px] bg-indigo-500 transition-transform duration-300 scale-y-0 group-hover:scale-y-100" :class="item.current ? 'scale-y-100' : ''"></span>
+        <span class="absolute h-1 w-full sm:h-full sm:w-1 rounded-full top-0 sm:-right-[1px] bg-indigo-500 transition-transform duration-300 scale-y-0 group-hover:scale-y-100" :class="currentRoute == item.to ? 'scale-y-100' : ''"></span>
       </router-link>
     </div>
 

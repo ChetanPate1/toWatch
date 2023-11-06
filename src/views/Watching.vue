@@ -757,7 +757,8 @@ export default {
         v-for="item in watching" 
         :key="item._id"
         :name="item.show.name"
-        :image="item.show.image.medium" 
+        :image="item.show.image.medium"
+        @onDelete="onDelete(item)"
       />
     </div>
 

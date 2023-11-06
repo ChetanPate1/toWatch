@@ -1,11 +1,18 @@
 <script>
-import Popup from '@/components/Popup/Popup';
-import SearchMovies from '@/components/Search/SearchMovies';
-import MovieCard from '@/components/MovieCard/MovieCard';
-import NoContent from '@/components/NoContent/NoContent';
-import Loader from '@/components/Loader/Loader';
-import Pager from '@/components/Pager/Pager';
-import ReachedEnd from '@/components/ReachedEnd/ReachedEnd';
+import TwShowMovieCard from '@/components/TwShowMovieCard';
+import TwContainer from '@/components/TwContainer';
+import TwFormLabel from '@/components/TwFormLabel';
+import TwSwitch from '@/components/TwSwitch';
+import TwButton from '@/components/TwButton';
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  DialogDescription,
+  TabGroup, TabList, Tab
+} from '@headlessui/vue';
 
 import { mapState } from 'vuex';
 
@@ -63,63 +70,77 @@ export default {
     }
   },
   components: {
-    Popup,
-    SearchMovies,
-    MovieCard,
-    NoContent,
-    Loader,
-    Pager,
-    ReachedEnd
+    TwShowMovieCard,
+    TwContainer,
+    TwFormLabel,
+    TwButton,
+    TwSwitch,
+    TransitionRoot,
+    TransitionChild,
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    DialogDescription,
+    TabGroup, TabList, Tab
   }
 };
 </script>
 
 <template lang="html">
-  <div>
-    <uiv-modal v-model="deleteModal.show" title="Confirm" @hide="onDelete" ref="deleteModal" ok-text="Yes" size="sm">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="margin-top-0 margin-bottom-20">
-            Are you sure you want to delete this movie?
-          </h4>
-        </div>
-      </div>
-    </uiv-modal>
+<tw-container>
+  <h1 class="text-5xl font-bold text-white mb-10">Watching</h1>
 
-    <pager v-if="collection.length > 15" :current-page="currentPage" :total-pages="totalPages">
-    </pager>
-
-    <div class="container-fluid fade-in">
-      <div class="row margin-bottom-20">
-        <div class="col-xs-12">
-          <search-movies></search-movies>
-        </div>
-      </div>
-
-      <div class="row show-layout">
-        <div class="col-xs-6 col-sm-3 col-md-2" v-for="item in collection" :key="item._id">
-          <movie-card :heading="item.movie.title" :img-src="item.movie.poster" :movie-id="item.movie._id" :id="item._id"
-            :deleteable="true" @onDelete="(id) => {
-              deleteModal.show = true;
-              deleteModal.id = id
-            }">
-          </movie-card>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <loader :show="requesting"></loader>
-        </div>
-      </div>
-
-      <reached-end :show="reachedEnd">
-        Reached End
-      </reached-end>
-
-      <no-content message="Your movie collection is empty!" v-if="collection.length == 0"></no-content>
-    </div>
+  <div class="flex flex-wrap gap-4">
+    <tw-show-movie-card 
+      v-for="item in watching" 
+      :key="item._id"
+      :name="item.show.name"
+      :image="item.show.image.medium"
+      @onDelete="onDelete(item)"
+    />
   </div>
+
+  <TransitionRoot appear :show="deleteModal.show" as="template">
+    <Dialog as="div" class="relative z-10">
+      <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
+        leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
+        <div class="fixed inset-0 bg-black/30" aria-hidden="true" />
+      </TransitionChild>
+
+      <div class="fixed inset-0 overflow-y-auto">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+          <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95">
+            <DialogPanel class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
+                Confirm Delete
+              </DialogTitle>
+
+              <div class="mt-2">
+                <p class="text-md text-gray-500 mb-4">
+                  Are you sure you want to delete this show?
+                </p>
+              </div>
+
+              <tw-form-label id="showTypeId">Place show in:</tw-form-label>
+              <tw-switch v-model="deleteModal.showTypeId" :options="showTypeList" value-key="label" />
+
+              <div class="flex gap-2 justify-end mt-9">
+                <tw-button class="bg-indigo-50 hover:bg-indigo-100 text-indigo-600" size="sm" type="button" @click="deleteModal.show = false">
+                  Cancel
+                </tw-button>
+                <tw-button size="sm" type="button" @click="onConfirmDelete">
+                  Yes
+                </tw-button>
+              </div>
+            </DialogPanel>
+          </TransitionChild>
+        </div>
+      </div>
+    </Dialog>
+  </TransitionRoot>
+</tw-container>
 </template>
 
 <style lang="scss"></style>
