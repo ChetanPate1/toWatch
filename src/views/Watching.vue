@@ -1,5 +1,5 @@
 <script>
-import TwWatchingCard from '@/components/TwWatchingCard';
+import TwShowMovieCard from '@/components/TwShowMovieCard';
 import TwContainer from '@/components/TwContainer';
 import TwFormLabel from '@/components/TwFormLabel';
 import TwSwitch from '@/components/TwSwitch';
@@ -732,7 +732,7 @@ export default {
     }
   },
   components: {
-    TwWatchingCard,
+    TwShowMovieCard,
     TwContainer,
     TwFormLabel,
     TwButton,
@@ -750,16 +750,14 @@ export default {
 
 <template>
   <tw-container>
-    <div class="grid grid-cols-4 gap-4">
-      <tw-watching-card 
-        v-for="item in watching" :key="item._id"
-        :name="item.show.name" 
-        :episode-title="item.episode.name"  
-        :on="formatOn(item.episode)"
-        :image="item.show.image.original" 
-        @onDelete="onDelete(item)" 
-        @onRewatch=""
-        @onContinue=""
+    <h1 class="text-5xl font-bold text-white mb-10">Watching</h1>
+
+    <div class="flex flex-wrap gap-4">
+      <tw-show-movie-card 
+        v-for="item in watching" 
+        :key="item._id"
+        :name="item.show.name"
+        :image="item.show.image.medium" 
       />
     </div>
 
