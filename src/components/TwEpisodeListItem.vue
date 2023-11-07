@@ -1,6 +1,6 @@
 <script>
-import TwCard from './TwCard.vue';
-import TwCircleButton from './TwCircleButton';
+import TwCard from '@/components/base/TwCard.vue';
+import TwCircleButton from '@/components/base/TwCircleButton';
 
 export default {
   name: 'TwEpisodeIListItem',
@@ -21,16 +21,19 @@ export default {
 </script>
 
 <template>
-  <tw-card class="p-4">
-    <div class="flex space-x-2">
-      <div class="flex-1 flex-col">
-        <h3 class="text-xs font-medium">Episode {{ this.formatEpisodeNumber(episode) }}</h3>
-        <p class="text-sm text-gray-500">{{ title }}</p>
+  <div class="flex gap-2 justify-between py-2 border-b-2 border-zinc-800">
+    <div class="flex gap-5 items-center text-sm">
+      <div class="font-medium text-white text-center min-w-[30px]">
+        {{ this.formatEpisodeNumber(episode) }}
       </div>
 
       <div>
-        <tw-circle-button type="eye" size="xs"></tw-circle-button>
+        <p class="text-slate-200">{{ title }}</p>
       </div>
     </div>
-  </tw-card>
+    
+    <div>
+      <tw-circle-button type="eye" size="xs"></tw-circle-button>
+    </div>
+  </div>
 </template>

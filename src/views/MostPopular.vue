@@ -1,5 +1,5 @@
 <script>
-import TwContainer from '@/components/TwContainer';
+import TwContainer from '@/components/base/TwContainer';
 import TwShowCard from '@/components/TwShowCard';
 import { mapState } from 'vuex';
 

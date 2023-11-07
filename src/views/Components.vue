@@ -1,12 +1,11 @@
 <template>
   <tw-container class="mt-6">
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-3 gap-4">
       <div>
-        <h3 class="text-2xl mb-3">Card</h3>
+        <h3 class="text-2xl text-white mb-3">Card</h3>
         <tw-card class="mb-5">
-          tw-card
+          <span class="text-white">tw-card</span>
         </tw-card>
-
 
         <tw-movie-card class="mb-5" name="Wednesday"
           image="https://static.tvmaze.com/uploads/images/medium_portrait/433/1082578.jpg" />
@@ -24,7 +23,7 @@
       </div>
 
       <div>
-        <h3 class="text-2xl mt-3 mb-3">tw-episode-list-item</h3>
+        <h3 class="text-2xl text-white mt-3 mb-3">tw-episode-list-item</h3>
         <ul role="list">
           <li v-for="item in episodes" :key="item._id" class="mb-1">
             <tw-episode-list-item :episode="item.number" :title="item.name" />
@@ -33,7 +32,7 @@
       </div>
 
       <div>
-        <h3 class="text-2xl mb-3">Buttons</h3>
+        <h3 class="text-2xl text-white mb-3">Buttons</h3>
         <tw-button>tw-button md</tw-button>
         <tw-button size="sm" class="mt-2">tw-button sm</tw-button>
         <tw-button size="xs" class="mt-2">tw-button xs</tw-button>
@@ -53,19 +52,19 @@
 </template>
 
 <script>
-import TwContainer from '@/components/TwContainer';
-import TwCard from '@/components/TwCard';
+import TwContainer from '@/components/base/TwContainer';
+import TwCard from '@/components/base/TwCard';
 import TwMovieCard from '@/components/TwMovieCard';
 import TwWatchedCard from '@/components/TwWatchedCard';
 import TwWatchingCard from '@/components/TwWatchingCard';
-import TwButton from '@/components/TwButton';
-import TwCircleButton from '@/components/TwCircleButton';
+import TwButton from '@/components/base/TwButton';
+import TwCircleButton from '@/components/base/TwCircleButton';
 import TwEpisodeListItem from '@/components/TwEpisodeListItem';
-import TwBadge from '@/components/TwBadge';
-import TwLoader from '@/components/TwLoader';
-import TwFormLabel from '@/components/TwFormLabel';
-import TwFormField from '@/components/TwFormField';
-import TwSwitch from '@/components/TwSwitch';
+import TwBadge from '@/components/base/TwBadge';
+import TwLoader from '@/components/base/TwLoader';
+import TwFormLabel from '@/components/base/TwFormLabel';
+import TwFormField from '@/components/base/TwFormField';
+import TwSwitch from '@/components/base/TwSwitch';
 
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 import {

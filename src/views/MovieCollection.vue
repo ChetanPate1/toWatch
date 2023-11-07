@@ -1,9 +1,9 @@
 <script>
 import TwShowMovieCard from '@/components/TwShowMovieCard';
-import TwContainer from '@/components/TwContainer';
-import TwFormLabel from '@/components/TwFormLabel';
-import TwSwitch from '@/components/TwSwitch';
-import TwButton from '@/components/TwButton';
+import TwContainer from '@/components/base/TwContainer';
+import TwFormLabel from '@/components/base/TwFormLabel';
+import TwSwitch from '@/components/base/TwSwitch';
+import TwButton from '@/components/base/TwButton';
 import {
   TransitionRoot,
   TransitionChild,

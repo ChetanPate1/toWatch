@@ -34,10 +34,10 @@
 </template>
 
 <script>
-import TwCard from '@/components/TwCard';
-import TwFormLabel from '@/components/TwFormLabel.vue';
-import TwFormField from '@/components/TwFormField.vue';
-import TwButton from '@/components/TwButton';
+import TwCard from '@/components/base/TwCard';
+import TwFormLabel from '@/components/base/TwFormLabel.vue';
+import TwFormField from '@/components/base/TwFormField.vue';
+import TwButton from '@/components/base/TwButton';
 
 import { mapState } from 'vuex';
 

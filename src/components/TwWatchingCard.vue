@@ -1,6 +1,6 @@
 <script>
-import TwCard from '@/components/TwCard';
-import TwCircleButton from './TwCircleButton.vue';
+import TwCard from '@/components/base/TwCard';
+import TwCircleButton from '@/components/base/TwCircleButton.vue';
 
 export default {
   name: 'TwWatchingCard',

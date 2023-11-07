@@ -1,5 +1,5 @@
 <script>
-import TwCard from '@/components/TwCard';
+import TwCard from '@/components/base/TwCard';
 
 export default {
   name: 'TwShowCard',
