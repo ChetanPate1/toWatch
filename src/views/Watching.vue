@@ -1,4 +1,5 @@
 <script>
+import TwSearchShow from '@/components/search/TwSearchShow';
 import TwShowMovieCard from '@/components/TwShowMovieCard';
 import TwContainer from '@/components/base/TwContainer';
 import TwFormField from '@/components/base/TwFormField';
@@ -733,6 +734,7 @@ export default {
     }
   },
   components: {
+    TwSearchShow,
     TwShowMovieCard,
     TwContainer,
     TwFormField,
@@ -751,10 +753,7 @@ export default {
 
 <template>
   <tw-container>
-    <div class="py-5">
-      
-      <tw-form-field id="search" v-model="search" placeholder="Search for a show" class="bg-transparent border-0 sm:text-xl" />
-    </div>
+    <tw-search-show  />
 
     <h1 class="text-5xl font-bold text-white mb-10">Watching</h1>
 

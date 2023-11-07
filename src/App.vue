@@ -12,9 +12,7 @@ export default {
 
 <template>
   <tw-navigation-bar></tw-navigation-bar>
-  <div class="pt-[80px]">
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <style>
