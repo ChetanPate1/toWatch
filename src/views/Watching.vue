@@ -3,6 +3,7 @@ import TwSearchShow from '@/components/search/TwSearchShow';
 import TwShowMovieCard from '@/components/TwShowMovieCard';
 import TwContainer from '@/components/base/TwContainer';
 import TwFormField from '@/components/base/TwFormField';
+import TwFormLabel from '@/components/base/TwFormLabel.vue';
 import TwSwitch from '@/components/base/TwSwitch';
 import TwButton from '@/components/base/TwButton';
 import {
@@ -738,6 +739,7 @@ export default {
     TwShowMovieCard,
     TwContainer,
     TwFormField,
+    TwFormLabel,
     TwButton,
     TwSwitch,
     TransitionRoot,
