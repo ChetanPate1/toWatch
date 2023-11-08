@@ -13,7 +13,7 @@ import { vue3Debounce } from 'vue-debounce';
 import { mapState } from 'vuex';
 
 export default {
-  name: 'TwSearchShow',
+  name: 'TwSearchMovie',
   data() {
     return {
       form: {
@@ -25,22 +25,19 @@ export default {
   },
   computed: {
     ...mapState({
-      shows: ({ shows }) => shows.showsFound
+      movies: ({ movies }) => movies.moviesFound
     })
   },
   methods: {
-    async findShow() {
+    async find() {
       this.form.requesting = true;
-      await this.$store.dispatch('shows/showsGet', this.form.search);
+      await this.$store.dispatch('movies/movieGet', this.form.search);
+
+      console.log(this.movies);
       this.form.requesting = false;
     },
-    async addSeries(show) {
-      const data = await this.$store.dispatch('shows/save', show);
-   
-      await this.$store.dispatch('watching/addToWatching', {
-        episodeId: data.seasons[0].episodes[0]._id,
-        showId: data._id
-      });
+    async addMovie(movie) {
+      await this.$store.dispatch('movieCollection/saveToMovieCollectionMovie', movie);
     }
   },
   directives: {
@@ -72,9 +69,9 @@ export default {
             <tw-form-field 
               id="search" 
               v-model="form.search" 
-              placeholder="Search for a show" 
+              placeholder="Search for a movie" 
               class="bg-transparent border-0 font-light"
-              v-debounce:1000="findShow"
+              v-debounce:1000="find"
               @focus="isFocused = true"
             />
           </form>
@@ -82,17 +79,17 @@ export default {
           <tw-loader class="absolute right-0" :show="form.requesting"/>
         </div>
 
-        <PopoverPanel static v-if="isFocused && shows.length" class="absolute z-10 text-white">
+        <PopoverPanel static v-if="isFocused && movies.length" class="absolute z-10 text-white">
           <tw-card class="p-0 max-h-[700px] overflow-y-auto">
             <tw-search-result-item 
-              v-for="item in shows"
-              :key="item.id"
-              :name="item.name"
-              :image="item.image.medium"
-              :released="item.premiered"
-              :genres="item.genres"
-              :summary="item.summary"
-              @on-add="() => { addSeries(item); isFocused = false; form.search = ''}"
+              v-for="item in movies"
+              :key="item.imdbID"
+              :name="item.Title"
+              :image="item.Poster"
+              :released="item.Released"
+              :genres="item.Genres"
+              :summary="item.Plot"
+              @on-add="() => { addMovie(item); isFocused = false; form.search = ''}"
               :disabled="form.requesting"
             />
           </tw-card>

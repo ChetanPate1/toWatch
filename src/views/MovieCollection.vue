@@ -4,6 +4,7 @@ import TwContainer from '@/components/base/TwContainer';
 import TwFormLabel from '@/components/base/TwFormLabel';
 import TwSwitch from '@/components/base/TwSwitch';
 import TwButton from '@/components/base/TwButton';
+import TwSearchMovies from '@/components/search/TwSearchMovie';
 import {
   TransitionRoot,
   TransitionChild,
@@ -75,6 +76,7 @@ export default {
     TwFormLabel,
     TwButton,
     TwSwitch,
+    TwSearchMovies,
     TransitionRoot,
     TransitionChild,
     Dialog,
@@ -88,11 +90,13 @@ export default {
 
 <template lang="html">
 <tw-container>
-  <h1 class="text-5xl font-bold text-white mb-10">Watching</h1>
+  <tw-search-movies />
+
+  <h1 class="text-5xl font-bold text-white mb-10">Movies</h1>
 
   <div class="flex flex-wrap gap-4">
     <tw-show-movie-card 
-      v-for="item in watching" 
+      v-for="item in collection" 
       :key="item._id"
       :name="item.show.name"
       :image="item.show.image.medium"

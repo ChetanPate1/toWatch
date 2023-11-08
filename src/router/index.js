@@ -47,14 +47,14 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: 'watchedShows' */ '../views/WatchedShows.vue')
   // },
-  // {
-  //   path: '/movie-collection',
-  //   name: 'movieCollection',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (watching.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: 'movieCollection' */ '../views/MovieCollection.vue')
-  // },
+  {
+    path: '/movie-collection',
+    name: 'movieCollection',
+    // route level code-splitting
+    // this generates a separate chunk (watching.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: 'movieCollection' */ '../views/MovieCollection.vue')
+  },
   // {
   //   path: '/movie-details/:movieId',
   //   name: 'movieDetails',

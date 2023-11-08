@@ -2,7 +2,8 @@ import axios from '../../http';
 import {
   MOVIE_DETAILS_GET,
   MOVIE_GET,
-  MOVIE_RESET } from '../mutation-types';
+  MOVIE_RESET
+} from '../mutation-types';
 
 const state = () => ({
   movieDetails: {},
@@ -25,17 +26,17 @@ const actions = {
           y: movie.split(',')[1]
         }
       });
-      
-      if(data.Error) {
+
+      if (data.Error) {
         return dispatch('showToast', {
           title: 'Not Found',
           message: 'Movie could not be found.'
         }, { root: true });
       }
-  
+
       const posterUrl = data.Poster;
       const poster = posterUrl.substring(0, posterUrl.length - 7);
-  
+
       commit(MOVIE_GET, [{
         ...data,
         Poster: poster + '125.jpg'
@@ -49,7 +50,7 @@ const actions = {
   },
   async movieDetailsGet({ dispatch, commit }, movieId) {
     try {
-      const { data }  = await axios({
+      const { data } = await axios({
         method: 'GET',
         url: `/movies/${movieId}`
       });
@@ -66,7 +67,10 @@ const mutations = {
     state.movieDetails = data;
   },
   [MOVIE_GET](state, movies) {
-    state.moviesFound = movies;
+    state.moviesFound = movies.map(movie => ({
+      ...movie,
+      genre: movie.Genre.split(', ')
+    }));
   },
   [MOVIE_RESET](state) {
     state.moviesFound = [];
