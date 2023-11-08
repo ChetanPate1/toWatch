@@ -1,7 +1,7 @@
 <script>
 export default {
   name: 'TwFormField',
-  emits: ['update:modelValue', 'onDebounce'],
+  emits: ['update:modelValue'],
   props: {
     modelValue: String,
     type: {
