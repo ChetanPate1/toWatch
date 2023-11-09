@@ -32,12 +32,18 @@ export default {
     async find() {
       this.form.requesting = true;
       await this.$store.dispatch('movies/movieGet', this.form.search);
-
       console.log(this.movies);
       this.form.requesting = false;
     },
     async addMovie(movie) {
       await this.$store.dispatch('movieCollection/saveToMovieCollectionMovie', movie);
+    },
+    genresToArray(genres) {
+      if(genres) {
+        return genres.split(', ');
+      }
+
+      return [];
     }
   },
   directives: {
@@ -69,7 +75,7 @@ export default {
             <tw-form-field 
               id="search" 
               v-model="form.search" 
-              placeholder="Search for a movie" 
+              placeholder="Search for a movie, year" 
               class="bg-transparent border-0 font-light"
               v-debounce:1000="find"
               @focus="isFocused = true"
@@ -87,7 +93,7 @@ export default {
               :name="item.Title"
               :image="item.Poster"
               :released="item.Released"
-              :genres="item.Genres"
+              :genres="genresToArray(item.Genre)"
               :summary="item.Plot"
               @on-add="() => { addMovie(item); isFocused = false; form.search = ''}"
               :disabled="form.requesting"

@@ -98,8 +98,8 @@ export default {
     <tw-show-movie-card 
       v-for="item in collection" 
       :key="item._id"
-      :name="item.show.name"
-      :image="item.show.image.medium"
+      :name="item.movie.title"
+      :image="item.movie.poster"
       @onDelete="onDelete(item)"
     />
   </div>

@@ -67,10 +67,7 @@ const mutations = {
     state.movieDetails = data;
   },
   [MOVIE_GET](state, movies) {
-    state.moviesFound = movies.map(movie => ({
-      ...movie,
-      genre: movie.Genre.split(', ')
-    }));
+    state.moviesFound = movies;
   },
   [MOVIE_RESET](state) {
     state.moviesFound = [];
