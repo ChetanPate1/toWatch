@@ -1,19 +1,25 @@
 /** @type {import('tailwindcss').Config} */
-
-module.exports = {
+export default {
   content: [
-    "./public/index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}"
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    container: {
-      center: true
-    },
     extend: {
+      keyframes: {
+        spinner: {
+          '0%': {
+            transform: 'rotate(0deg)'
+          },
+          '100%': {
+            transform: 'rotate(360deg)'
+          }
+        }
+      },
       animation: {
-        'spinner': 'spin .4s linear infinite',
+        spinner: 'spinner 0.4s linear infinite'
       }
-    }
+    },
   },
-  plugins: []
+  plugins: [],
 }
