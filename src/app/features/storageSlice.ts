@@ -1,14 +1,14 @@
 // Third party
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // Local
-import { getStorage, updateStorage, StorageType } from "../../services/storage";
+import {
+  getStorage,
+  updateStorage,
+  StorageType,
+  storagePayload,
+} from "../../services/storage";
 
 const initialState: StorageType = {};
-
-type storagePayload = {
-  prop: string;
-  value: string | number | boolean | object;
-};
 
 export const storageInitilize = createAsyncThunk(
   "storage/initilize",
@@ -33,10 +33,9 @@ export const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(storageInitilize.fulfilled, (state, action) => action.payload)
+      .addCase(storageInitilize.fulfilled, (_state, action) => action.payload)
       .addCase(storageUpdate.fulfilled, (state, action) => {
-        state = { ...state, ...action.payload };
-        return state;
+        return { ...state, ...action.payload };
       });
   },
 });

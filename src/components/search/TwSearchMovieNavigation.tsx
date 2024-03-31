@@ -1,7 +1,6 @@
 // Core
-import { useImperativeHandle, useRef, useState } from "react";
+import { useImperativeHandle, useRef } from "react";
 // Thirt Party
-import { useNavigate } from "react-router-dom";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
 import TwContainer from "../base/TwContainer";
@@ -9,8 +8,6 @@ import TwFormField from "../base/TwFormField";
 import TwLoader from "../base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
 import Base from "../modals/Base";
-import TwCard from "../base/TwCard";
-import TwButton from "../base/TwButton";
 
 import { useFindMoviesMutation, useSaveMovieMutation } from "../../app/api/towatch/movies";
 

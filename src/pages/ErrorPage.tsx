@@ -3,8 +3,13 @@ import { useRouteError } from "react-router-dom";
 // Local
 import TwContainer from '../components/base/TwContainer';
 
+type ErrorType = {
+   statusText: string;
+   message: string;
+};
+
 const ErrorPage = () => {
-   const error = useRouteError();
+   const error: ErrorType = useRouteError();
 
    return (
       <TwContainer>

@@ -25,7 +25,7 @@ const TwNavigationBar = () => {
           to={item.to}
           className="relative text-white text-center text-xl md:h-14 flex flex-row items-center justify-center mx-5 md:mx-0 md:my-2 group hover:text-indigo-500"
         >
-          {({ isActive, isPending, isTransitioning }) => (
+          {({ isActive }) => (
             <>
               {item.icon}
               <span className="sr-only">{item.name}</span>

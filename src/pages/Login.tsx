@@ -13,7 +13,7 @@ const Login = () => {
       password: ''
    });
 
-   const onChangeText = (prop, value) => {
+   const onChangeText = (prop: string, value: string) => {
       setForm({ ...form, [prop]: value });
    };
 
@@ -34,7 +34,7 @@ const Login = () => {
             <form name="signinForm" noValidate>
                <div className="mb-4">
                   <TwFormLabel for="email">Email</TwFormLabel>
-                  <TwFormField id="email" value={form.email} onChange={(text) => onChangeText('email', text)} />
+                  <TwFormField id="email" onChange={(text) => onChangeText('email', text)} />
                </div>
 
                <div className="mb-4">
@@ -43,7 +43,7 @@ const Login = () => {
                      <button className="text-right text-xs hover:text-indigo-600" type="button"
                         onClick={() => { }}>Forgotten your password?</button>
                   </div>
-                  <TwFormField id="password" type="password" value={form.password} onChange={(text) => onChangeText('password', text)} />
+                  <TwFormField id="password" type="password" onChange={(text) => onChangeText('password', text)} />
                </div>
 
                <TwButton type="button" onClick={() => login(form)} className="w-full mt-7">Sign in</TwButton>

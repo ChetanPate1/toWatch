@@ -2,9 +2,9 @@ export interface StorageType {
   [key: string]: string | number | boolean | object;
 }
 
-type storagePayload = {
+export type storagePayload = {
   prop: string;
-  value: string | number | boolean | object;
+  value: string | number | boolean | object | null;
 };
 
 export const getStorage = async () => {

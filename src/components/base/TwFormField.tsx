@@ -1,5 +1,3 @@
-// Core
-import react from 'react';
 // Third Party
 import classNames from "classnames";
 

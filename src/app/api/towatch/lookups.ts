@@ -16,7 +16,6 @@ export const lookupsApi = apiSlice.injectEndpoints({
         url: `${apiUrl}/episode-tags`,
         params,
       }),
-      transformResponse: (response) => response.data,
     }),
     fetchShowTypes: builder.query({
       query: () => `${apiUrl}/show-types`,

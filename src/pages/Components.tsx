@@ -656,9 +656,6 @@ const Components = () => {
                   <span className="text-white">tw-card</span>
                </TwCard>
 
-               <TwMovieCard className="mb-5" name="Wednesday"
-                  image="https://static.tvmaze.com/uploads/images/medium_portrait/433/1082578.jpg" />
-
                <TwMovieCard className="mb-5" name="Wednesday" episode-title="Chapter III: Friend or Woe"
                   on="Season 01 Episode 03" image="https://static.tvmaze.com/uploads/images/medium_portrait/433/1082578.jpg"
                   onDelete=""

@@ -12,7 +12,11 @@ import { storageUpdate } from "../../features/storageSlice";
 
 const thirdPartyEndpoint = ["findShows", "findMovies"];
 
-const setToken = (headers, endpoint, token) => {
+const setToken = (
+  headers: Headers,
+  endpoint: string,
+  token: string | number | boolean | object | null
+) => {
   if (token && thirdPartyEndpoint.indexOf(endpoint) < 0) {
     headers.set("Authorization", `Token ${token}`);
   }
@@ -36,22 +40,11 @@ const baseQueryWithResponseHeaderWatcher: BaseQueryFn<
   const result = await baseQuery(args, api, extraOptions);
 
   if (result?.error) {
-    const { data } = result.error;
     console.log("baseQueryWithResponseHeaderWatcher error", result);
-
-    if (data?.errors) {
-      // api.dispatch(createErrors(data.errors));
-    }
-
-    if (data?.error) {
-      // api.dispatch(
-      //   createError({ title: "Error", message: data.error || "Unknown error" })
-      // );
-    }
 
     if (result.error.status === 401) {
       // Logout user
-      api.dispatch(storageUpdate({ token: "" }));
+      api.dispatch(storageUpdate({ prop: "token", value: "" }));
       // api.dispatch(createError({ title: "Error", message: "Unauthorized" }));
     }
   }

@@ -1,11 +1,16 @@
 // Third Party
 import classNames from "classnames";
 
+type ItemType = {
+   _id: string;
+   number: number;
+};
+
 type Props = {
-   list: any[];
+   list: ItemType[];
    buttonPrefix: 'S' | 'E';
    active: number;
-   onChange: (item) => void;
+   onChange: (item: ItemType) => void;
 };
 
 const TwSeriesButtonSelect = (props: Props) => {

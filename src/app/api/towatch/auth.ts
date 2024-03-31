@@ -9,6 +9,13 @@ type LoginPayload = {
   password: string;
 };
 
+type LoginResponse = {
+  data: {
+    token: string;
+    email: string;
+  };
+};
+
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
@@ -19,15 +26,14 @@ export const authApi = apiSlice.injectEndpoints({
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
-          const result = await queryFulfilled;
-          console.log("onQueryStarted", result);
+          const { data }: LoginResponse = await queryFulfilled;
 
-          dispatch(storageUpdate({ token: result.token, email: result.email }));
+          dispatch(storageUpdate({ prop: "token", value: data.token }));
+          dispatch(storageUpdate({ prop: "email", value: data.email }));
         } catch (error) {
           console.log(error);
         }
       },
-      transformResponse: (response) => response.data,
     }),
   }),
 });
