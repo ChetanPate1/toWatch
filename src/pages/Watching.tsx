@@ -12,12 +12,13 @@ import { useDeleteShowFromWatchingMutation, useFetchWatchingQuery } from "../app
 import { useFetchShowTypesQuery } from '../app/api/towatch/lookups';
 import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
 import Empty from '../components/empty';
+import TwPageLoader from '../components/page-loader';
 
 const Watching = () => {
    const confirmModal = useRef({});
    const selectedShow = useRef();
    const searchShow = useRef({});
-   const { data, refetch } = useFetchWatchingQuery({ currentPage: 1 });
+   const { data, isFetching, refetch } = useFetchWatchingQuery({ currentPage: 1 });
    const { data: showTypes } = useFetchShowTypesQuery(null);
    const [deleteShowFromWatching] = useDeleteShowFromWatchingMutation();
 
@@ -29,6 +30,10 @@ const Watching = () => {
    };
 
    const renderContent = () => {
+      if (isFetching) {
+         return <TwPageLoader />;
+      }
+
       if (data?.watching.length > 0) {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
@@ -53,7 +58,7 @@ const Watching = () => {
       return (
          <Empty
             buttonName="Search for a show"
-            message="You haven't watch anything!"
+            message="You haven't watched anything!"
             onClick={searchShow.current.openAddShowModal}
          />
       );

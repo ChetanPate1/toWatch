@@ -7,14 +7,15 @@ import TwContainer from '../components/base/TwContainer';
 import TwShowMovieCard from '../components/TwShowMovieCard';
 import Confirm from '../components/modals/Confirm';
 import Empty from '../components/empty';
-import { useDeleteMovieFromCollectionMutation, useFetchMoviesQuery } from '../app/api/towatch/movies';
 import TwSearchMovieNavigation from '../components/search/TwSearchMovieNavigation';
+import TwPageLoader from '../components/page-loader';
+import { useDeleteMovieFromCollectionMutation, useFetchMoviesQuery } from '../app/api/towatch/movies';
 
 const Movies = () => {
    const confirmModal = useRef({});
    const selectedMovie = useRef();
    const searchMovie = useRef({});
-   const { data, refetch } = useFetchMoviesQuery({ currentPage: 1 });
+   const { data, isFetching, refetch } = useFetchMoviesQuery({ currentPage: 1 });
    const [deleteMovieFromCollection] = useDeleteMovieFromCollectionMutation();
 
    const onConfirmDelete = (movie) => {
@@ -23,6 +24,10 @@ const Movies = () => {
    };
 
    const renderContent = () => {
+      if (isFetching) {
+         return <TwPageLoader />;
+      }
+
       if (data?.collection.length > 0) {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">

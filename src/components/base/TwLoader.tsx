@@ -8,7 +8,7 @@ type Props = {
 
 const TwLoader = (props: Props) => {
   const loaderClass = classNames(
-    "animate-spinner border-2 h-5 w-5 rounded-full border-indigo-500 border-b-indigo-200",
+    "animate-spinner border-2 h-5 w-5 rounded-full border-indigo-500 border-b-indigo-900",
     props.className
   );
 
