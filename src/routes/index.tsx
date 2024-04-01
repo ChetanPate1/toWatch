@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 
 import Root from "./Root";
 import Components from "../pages/Components";
@@ -10,7 +10,7 @@ import Watching from "../pages/Watching";
 import WatchingDetail from "../pages/WatchingDetail";
 import ErrorPage from "../pages/ErrorPage";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
