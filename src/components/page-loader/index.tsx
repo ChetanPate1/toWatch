@@ -9,7 +9,7 @@ type Props = {
 
 const TwPageLoader = (props: Props) => {
   const loaderClass = classNames(
-    "w-full h-screen flex items-center justify-center",
+    "w-full h-[700px] flex items-center justify-center",
     props.className
   );
 
