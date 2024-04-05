@@ -4,12 +4,6 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const watchedShowsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    fetchWatchedShows: builder.query({
-      query: (params = { currentPage: 1, showType: "Collection" }) => ({
-        url: `${apiUrl}/watched-shows`,
-        params,
-      }),
-    }),
     deleteWatchedShow: builder.mutation({
       query: (showId: string) => ({
         url: `${apiUrl}/watched-shows/${showId}`,

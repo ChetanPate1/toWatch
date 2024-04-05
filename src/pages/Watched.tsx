@@ -1,5 +1,5 @@
 // Core
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 // Third Party
 import { useNavigate } from 'react-router-dom';
 // Local
@@ -11,20 +11,37 @@ import TwPageLoader from '../components/page-loader';
 import {
    useContinueWatchingShowMutation,
    useDeleteWatchedShowMutation,
-   useFetchWatchedShowsQuery,
    useRewatchShowMutation
 } from '../app/api/towatch/watched-shows';
 import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
+import { useAppDispatch, useAppSelector } from '../app/store';
+import { fetchWatchedShows, fetchWatchedShowsPagination } from '../app/features/watchedShowSlice';
+import TwReachedEnd from '../components/reached-end';
 
 const Watched = () => {
    const navigate = useNavigate();
+   const dispatch = useAppDispatch();
+   const { list, isFetching, currentPage, totalPages } = useAppSelector((state) => state.watchedShow);
    const confirmModal = useRef({});
    const selectedShow = useRef();
    const searchShow = useRef({});
-   const { data, isFetching, refetch } = useFetchWatchedShowsQuery({ currentPage: 1, showType: "Collection" });
+
    const [deleteWatchedShow] = useDeleteWatchedShowMutation();
    const [continueWatchingShow] = useContinueWatchingShowMutation();
    const [rewatchShow] = useRewatchShowMutation();
+
+   useEffect(() => {
+      dispatch(fetchWatchedShows());
+
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+   }, []);
+
+   const handleScroll = () => {
+      if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+
+      dispatch(fetchWatchedShowsPagination());
+   };
 
    const onConfirmDelete = (watched) => {
       deleteWatchedShow(watched.showId).then(() => refetch());
@@ -47,10 +64,10 @@ const Watched = () => {
          return <TwPageLoader />;
       }
 
-      if (data?.watchedShows.length > 0) {
+      if (list.length > 0) {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 justify-items-center gap-4">
-               {data?.watchedShows?.map((item) => (
+               {list.map((item) => (
                   <TwWatchedCard
                      key={item._id}
                      name={item.name}
@@ -79,6 +96,14 @@ const Watched = () => {
       );
    };
 
+   const renderListEnd = () => {
+      if (currentPage == totalPages && list.length > 0 && !isFetching) {
+         return <TwReachedEnd />;
+      }
+
+      return null;
+   };
+
    return (
       <TwContainer className="mt-9">
          <TwSearchShowNavigation reference={searchShow} />
@@ -86,6 +111,7 @@ const Watched = () => {
          <h1 className="text-2xl font-bold text-white mb-5">Watched</h1>
 
          {renderContent()}
+         {renderListEnd()}
 
          <Confirm
             reference={confirmModal}

@@ -4,12 +4,6 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const watchingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    fetchWatching: builder.query({
-      query: (params = { currentPage: 1 }) => ({
-        url: `${apiUrl}/watchings`,
-        params,
-      }),
-    }),
     fetchShowDetails: builder.query({
       query: (watchingId) => ({
         url: `${apiUrl}/watchings/${watchingId}`,

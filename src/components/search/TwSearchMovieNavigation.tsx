@@ -13,6 +13,7 @@ import { useFindMoviesMutation, useSaveMovieMutation } from "../../app/api/towat
 
 type Props = {
   reference: any;
+  onAddMovie: (movie: any) => void;
 };
 
 const TwSearchMovieNavigation = (props: Props) => {
@@ -44,7 +45,12 @@ const TwSearchMovieNavigation = (props: Props) => {
 
   const onSaveMovie = (movie) => {
     saveMovie(movie).unwrap()
-      .then(() => addMovieModal.current.close())
+      .then((data) => {
+        console.log(data);
+
+        props.onAddMovie(data.movie);
+        addMovieModal.current.close()
+      })
       .catch((e) => {
         console.log(e);
       });

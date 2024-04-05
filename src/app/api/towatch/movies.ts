@@ -6,12 +6,6 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const movieSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    fetchMovies: builder.query({
-      query: (params = { currentPage: 1 }) => ({
-        url: `${apiUrl}/movie-collections`,
-        params,
-      }),
-    }),
     saveMovie: builder.mutation({
       query: (movie) => {
         const posterUrl = movie.Poster.slice(0, movie.Poster.length - 7);

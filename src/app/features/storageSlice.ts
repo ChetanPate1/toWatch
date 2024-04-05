@@ -13,8 +13,6 @@ const initialState: StorageType = {};
 export const storageInitilize = createAsyncThunk(
   "storage/initilize",
   async () => {
-    console.log("storageInitilize", await getStorage());
-
     return await getStorage();
   }
 );
