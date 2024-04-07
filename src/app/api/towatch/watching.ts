@@ -44,7 +44,6 @@ export const watchingApi = apiSlice.injectEndpoints({
 });
 
 export const {
-  useFetchWatchingQuery,
   useFetchShowDetailsQuery,
   useAddShowToWatchingMutation,
   useDeleteShowFromWatchingMutation,

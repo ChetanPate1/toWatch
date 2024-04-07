@@ -50,7 +50,7 @@ const Movies = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {collection.map((item) => (
-                  <Link className="w-full" to={`/movies/${item._id}`} key={item._id}>
+                  <Link className="w-full" to={`/movies/${item.movie._id}`} key={item._id}>
                      <TwShowMovieCard
                         key={item.movie._id}
                         name={item.movie.title}

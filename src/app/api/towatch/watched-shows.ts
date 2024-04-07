@@ -26,7 +26,6 @@ export const watchedShowsApi = apiSlice.injectEndpoints({
 });
 
 export const {
-  useFetchWatchedShowsQuery,
   useDeleteWatchedShowMutation,
   useContinueWatchingShowMutation,
   useRewatchShowMutation,

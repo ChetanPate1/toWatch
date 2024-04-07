@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import { useAppSelector } from '../app/store';
 
 const navigation = [
-  { name: 'Movie Collection', to: '/movie-collection', icon: <FilmIcon className="h-6 w-6 text-white" /> },
+  { name: 'Movie Collection', to: '/movies', icon: <FilmIcon className="h-6 w-6 text-white" /> },
   { name: 'Watched Shows', to: '/watched-shows', icon: <TvIcon className="h-6 w-6 text-white" /> },
   { name: 'Watching', to: '/watching', icon: <EyeIcon className="h-6 w-6 text-white" /> }
 ];

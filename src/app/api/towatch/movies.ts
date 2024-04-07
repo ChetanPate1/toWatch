@@ -38,12 +38,15 @@ export const movieSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
+    fetchMovie: builder.query({
+      query: (movieId: string) => `${apiUrl}/movies/${movieId}`,
+    }),
   }),
 });
 
 export const {
-  useFetchMoviesQuery,
   useFindMoviesMutation,
   useSaveMovieMutation,
   useDeleteMovieFromCollectionMutation,
+  useFetchMovieQuery,
 } = movieSlice;

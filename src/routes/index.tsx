@@ -5,6 +5,7 @@ import Components from "../pages/Components";
 import Login from "../pages/Login";
 import MostPopular from "../pages/MostPopular";
 import Movies from "../pages/Movies";
+import MovieDetail from "../pages/MovieDetail";
 import Watched from "../pages/Watched";
 import Watching from "../pages/Watching";
 import WatchingDetail from "../pages/WatchingDetail";
@@ -29,8 +30,12 @@ const router = createHashRouter([
         element: <MostPopular />,
       },
       {
-        path: "/movie-collection",
+        path: "/movies",
         element: <Movies />,
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetail />,
       },
       {
         path: "/watched-shows",
