@@ -5,7 +5,7 @@ import { RootState } from "../store";
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 const initialState = {
-  collection: [],
+  list: [],
   currentPage: 1,
   totalPages: 3,
   pageSize: 15,
@@ -37,7 +37,7 @@ export const fetchMovieCollectionPagination = createAsyncThunk(
 
     if (isFetching || currentPage >= totalPages) {
       return {
-        collection: [],
+        list: [],
         currentPage,
         totalPages,
         pageSize,
@@ -65,7 +65,7 @@ export const slice = createSlice({
     builder
       .addCase(fetchMovieCollection.fulfilled, (state, action) => {
         state.isFetching = false;
-        state.collection = action.payload.collection;
+        state.list = action.payload.collection;
         state.currentPage = action.payload.currentPage;
         state.totalPages = action.payload.totalPages;
         state.pageSize = action.payload.pageSize;
@@ -78,7 +78,7 @@ export const slice = createSlice({
       })
       .addCase(fetchMovieCollectionPagination.fulfilled, (state, action) => {
         state.isFetching = false;
-        state.collection = [...state.collection, ...action.payload.collection];
+        state.list = [...state.list, ...action.payload.collection];
 
         if (action.payload.collection.length > 0) {
           state.currentPage = action.payload.currentPage;

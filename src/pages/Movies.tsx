@@ -20,7 +20,7 @@ const Movies = () => {
    const selectedMovie = useRef();
    const searchMovie = useRef({});
    const dispatch = useAppDispatch();
-   const { collection, currentPage, totalPages, isFetching } = useAppSelector((state) => state.movie);
+   const { list, currentPage, totalPages, isFetching } = useAppSelector((state) => state.movie);
    const [deleteMovieFromCollection] = useDeleteMovieFromCollectionMutation();
 
    useEffect(() => {
@@ -46,10 +46,10 @@ const Movies = () => {
          return <TwPageLoader />;
       }
 
-      if (collection.length > 0) {
+      if (list.length > 0) {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
-               {collection.map((item) => (
+               {list.map((item) => (
                   <Link className="w-full" to={`/movies/${item.movie._id}`} key={item._id}>
                      <TwShowMovieCard
                         key={item.movie._id}
@@ -77,7 +77,7 @@ const Movies = () => {
    };
 
    const renderListEnd = () => {
-      if (currentPage == totalPages && collection.length > 0 && !isFetching) {
+      if (currentPage == totalPages && list.length > 0 && !isFetching) {
          return <TwReachedEnd />;
       }
 
