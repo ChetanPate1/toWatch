@@ -1,5 +1,5 @@
 // Core
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // Third Party
 import { Link } from 'react-router-dom';
 // Local
@@ -13,12 +13,16 @@ import TwPageLoader from '../components/page-loader';
 import { useDeleteMovieFromCollectionMutation } from '../app/api/towatch/movies';
 import { fetchMovieCollection, fetchMovieCollectionPagination } from '../app/features/movieSlice';
 import { useAppDispatch, useAppSelector } from '../app/store';
+import FullScreen from '../components/modals/FullScreen';
+import MovieDetail from './MovieDetail';
 
 
 const Movies = () => {
    const confirmModal = useRef({});
    const selectedMovie = useRef();
+   const movieDetail = useRef({});
    const searchMovie = useRef({});
+   const [movieId, setMovieId] = useState('');
    const dispatch = useAppDispatch();
    const { list, currentPage, totalPages, isFetching } = useAppSelector((state) => state.movie);
    const [deleteMovieFromCollection] = useDeleteMovieFromCollectionMutation();
@@ -41,6 +45,11 @@ const Movies = () => {
          .then(() => refetch());
    };
 
+   const onMovieDetail = (movieId: string) => {
+      setMovieId(movieId);
+      movieDetail.current.open();
+   };
+
    const renderContent = () => {
       if (isFetching) {
          return <TwPageLoader />;
@@ -50,7 +59,7 @@ const Movies = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {list.map((item) => (
-                  <Link className="w-full" to={`/movies/${item.movie._id}`} key={item._id}>
+                  <a className="w-full" key={item._id} onClick={() => onMovieDetail(item.movie._id)}>
                      <TwShowMovieCard
                         key={item.movie._id}
                         name={item.movie.title}
@@ -61,7 +70,7 @@ const Movies = () => {
                         }}
                         deleteable
                      />
-                  </Link>
+                  </a>
                ))}
             </div>
          );
@@ -97,6 +106,10 @@ const Movies = () => {
             text="Are you sure you want to delete this movie from your movie list?"
             onConfirm={() => onConfirmDelete(selectedMovie.current)}
          />
+
+         <FullScreen reference={movieDetail}>
+            <MovieDetail movieId={movieId} onBack={movieDetail.current.close} />
+         </FullScreen>
       </TwContainer>
    );
 };

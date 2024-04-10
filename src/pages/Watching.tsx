@@ -1,7 +1,5 @@
 // Core
-import { useEffect, useRef } from 'react';
-// Third Party
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 // Local
 import TwContainer from '../components/base/TwContainer';
 import TwShowMovieCard from '../components/TwShowMovieCard';
@@ -10,6 +8,8 @@ import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation'
 import Empty from '../components/empty';
 import TwPageLoader from '../components/page-loader';
 import TwReachedEnd from '../components/reached-end';
+import FullScreen from '../components/modals/FullScreen';
+import WatchingDetail from './WatchingDetail';
 
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { useDeleteShowFromWatchingMutation } from "../app/api/towatch/watching";
@@ -22,6 +22,8 @@ const Watching = () => {
    const confirmModal = useRef({});
    const selectedShow = useRef();
    const searchShow = useRef({});
+   const watchingDetail = useRef({});
+   const [watchingId, setWatchingId] = useState('');
 
    const { data: showTypes } = useFetchShowTypesQuery(null);
    const [deleteShowFromWatching] = useDeleteShowFromWatchingMutation();
@@ -46,6 +48,11 @@ const Watching = () => {
          .then(() => refetch());
    };
 
+   const onWatchingDetail = (watchingId: string) => {
+      setWatchingId(watchingId);
+      watchingDetail.current.open();
+   };
+
    const renderContent = () => {
       if (isFetching) {
          return <TwPageLoader />;
@@ -55,7 +62,7 @@ const Watching = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {list.map((item) => (
-                  <Link className="w-full" to={`/watching/${item._id}`} key={item._id}>
+                  <a className="w-full" key={item._id} onClick={() => onWatchingDetail(item._id)}>
                      <TwShowMovieCard
                         name={item.show.name}
                         image={item.show.image.medium}
@@ -66,7 +73,7 @@ const Watching = () => {
                         onWatched={() => console.log("watched")}
                         deleteable
                      />
-                  </Link>
+                  </a>
                ))}
             </div>
          );
@@ -103,6 +110,10 @@ const Watching = () => {
             text="Are you sure you want to delete this show from your watching list?"
             onConfirm={() => onConfirmDelete(selectedShow.current)}
          />
+
+         <FullScreen reference={watchingDetail}>
+            <WatchingDetail watchingId={watchingId} onBack={watchingDetail.current.close} />
+         </FullScreen>
       </TwContainer>
    );
 };
