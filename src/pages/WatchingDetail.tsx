@@ -87,7 +87,7 @@ const WatchingDetail = (props: Props) => {
          </div>
 
          <div className="flex items-center px-20 max-w-[750px]">
-            <div className="text-left">
+            <div className="text-left w-full">
                <h1 className="text-3xl font-bold text-white mt-2 relative pl-16">
                   <TwCircleButton className="absolute left-0 -top-2" type="backward" onClick={props.onBack} />
 
@@ -107,7 +107,7 @@ const WatchingDetail = (props: Props) => {
                   />
                </TwCard>
 
-               <TwCard className="min-h-96 max-h-[450px] overflow-y-auto py-1">
+               <TwCard className="min-h-96 w-full max-h-[444px] overflow-y-auto scrollbar-none py-1">
                   {renderEpisodeList(episodes)}
                </TwCard>
             </div>

@@ -1,7 +1,5 @@
 // Core
 import { useEffect, useRef, useState } from 'react';
-// Third Party
-import { Link } from 'react-router-dom';
 // Local
 import TwContainer from '../components/base/TwContainer';
 import TwShowMovieCard from '../components/TwShowMovieCard';
@@ -59,7 +57,7 @@ const Movies = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {list.map((item) => (
-                  <a className="w-full" key={item._id} onClick={() => onMovieDetail(item.movie._id)}>
+                  <a className="w-full hover:cursor-pointer" key={item._id} onClick={() => onMovieDetail(item.movie._id)}>
                      <TwShowMovieCard
                         key={item.movie._id}
                         name={item.movie.title}
@@ -94,9 +92,9 @@ const Movies = () => {
    };
 
    return (
-      <TwContainer className="mt-9">
+      <TwContainer className="mt-24">
          <TwSearchMovieNavigation reference={searchMovie} onAddMovie={(movie) => { }} />
-         <h1 className="text-2xl font-bold text-white mb-5">Movies</h1>
+         <h1 className="sr-only">Movies</h1>
 
          {renderContent()}
          {renderListEnd()}

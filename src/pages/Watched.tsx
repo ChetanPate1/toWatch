@@ -105,10 +105,10 @@ const Watched = () => {
    };
 
    return (
-      <TwContainer className="mt-9">
+      <TwContainer className="mt-24">
          <TwSearchShowNavigation reference={searchShow} />
 
-         <h1 className="text-2xl font-bold text-white mb-5">Watched</h1>
+         <h1 className="sr-only">Watched</h1>
 
          {renderContent()}
          {renderListEnd()}

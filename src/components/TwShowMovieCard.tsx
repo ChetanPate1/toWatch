@@ -6,6 +6,7 @@ import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 // Local
 import TwCard from './base/TwCard';
+import TwCircleButton from "./base/TwCircleButton";
 
 type Props = {
   name: string;
@@ -13,6 +14,7 @@ type Props = {
   deleteable: boolean;
   onDelete: () => void;
   onWatched?: () => void;
+  onPlay?: () => void;
   className?: string;
 };
 
@@ -22,11 +24,28 @@ const TwShowMovieCard = (props: Props) => {
     props.className
   );
 
+  const renderPlayButton = () => {
+    if (props.onPlay) {
+      return (
+        <TwCircleButton
+          className="absolute bottom-3 right-2 transform-gpu"
+          type="play"
+          size="xs"
+          onClick={props.onPlay}
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <TwCard
       className={classes}
       style={{ backgroundImage: `url(${props.image})` }}
     >
+      {renderPlayButton()}
+
       <h5 className="absolute top-5 left-5 z-40 text-white text-lg font-medium tracking-wide">
         {props.name}
       </h5>

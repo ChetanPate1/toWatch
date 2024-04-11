@@ -94,7 +94,7 @@ const TwSearchMovieNavigation = (props: Props) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full py-3 bg-neutral-900 z-[45]">
+    <div className="fixed top-0 left-0 w-full py-3 backdrop-blur-md z-[45]">
       <TwContainer className="flex flex-row justify-center !mb-0">
         <div className="flex flex-row items-center">
           <MagnifyingGlassIcon className="h-4 w-4 text-zinc-500" aria-hidden="true" />
