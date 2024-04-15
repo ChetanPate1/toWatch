@@ -8,15 +8,15 @@ import TwWatchedCard from '../components/TwWatchedCard';
 import Confirm from '../components/modals/Confirm';
 import Empty from '../components/empty';
 import TwPageLoader from '../components/page-loader';
+import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
+import TwReachedEnd from '../components/reached-end';
 import {
    useContinueWatchingShowMutation,
    useDeleteWatchedShowMutation,
    useRewatchShowMutation
 } from '../app/api/towatch/watched-shows';
-import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
 import { useAppDispatch, useAppSelector } from '../app/store';
 import { fetchWatchedShows, fetchWatchedShowsPagination } from '../app/features/watchedShowSlice';
-import TwReachedEnd from '../components/reached-end';
 
 const Watched = () => {
    const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Watched = () => {
    };
 
    const onConfirmDelete = (watched) => {
-      deleteWatchedShow(watched.showId).then(() => refetch());
+      deleteWatchedShow(watched.showId).then(() => dispatch(fetchWatchedShows()));
    };
 
    const handleContinue = (watched) => {

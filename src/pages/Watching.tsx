@@ -52,7 +52,7 @@ const Watching = () => {
       const collection = showTypes?.find(({ label }) => label === "Collection");
 
       deleteShowFromWatching({ id: watching._id, showTypeId: collection.id })
-         .then(() => refetch());
+         .then(() => dispatch(fetchWatching()));
    };
 
    const onWatchingDetail = (watchingId: string) => {

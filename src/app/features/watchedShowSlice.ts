@@ -87,7 +87,7 @@ export const slice = createSlice({
         state.isFetching = false;
         state.list = [...state.list, ...action.payload.watchedShows];
 
-        if (action.payload.collection.length > 0) {
+        if (action.payload.watchedShows.length > 0) {
           state.currentPage = action.payload.currentPage;
         }
 

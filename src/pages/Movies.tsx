@@ -40,7 +40,7 @@ const Movies = () => {
 
    const onConfirmDelete = (movie) => {
       deleteMovieFromCollection(movie._id)
-         .then(() => refetch());
+         .then(() => dispatch(fetchMovieCollection()));
    };
 
    const onMovieDetail = (movieId: string) => {
