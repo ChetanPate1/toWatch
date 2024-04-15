@@ -1,5 +1,7 @@
 // Core
 import { useEffect, useRef, useState } from 'react';
+// Thirty Party
+import { useParams } from 'react-router-dom';
 // Local
 import TwContainer from '../components/base/TwContainer';
 import TwShowMovieCard from '../components/TwShowMovieCard';
@@ -18,6 +20,7 @@ import { fetchWatching, fetchWatchingPagination } from '../app/features/watching
 
 const Watching = () => {
    const dispatch = useAppDispatch();
+   const route = useParams();
    const { list, isFetching, currentPage, totalPages } = useAppSelector((state) => state.watching);
    const confirmModal = useRef({});
    const selectedShow = useRef();
@@ -30,6 +33,10 @@ const Watching = () => {
 
    useEffect(() => {
       dispatch(fetchWatching());
+
+      if (route.id) {
+         onWatchingDetail(route.id);
+      }
 
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);

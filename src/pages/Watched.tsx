@@ -49,7 +49,7 @@ const Watched = () => {
 
    const handleContinue = (watched) => {
       continueWatchingShow(watched.showId).unwrap()
-         .then(({ _id }) => navigate(`/watching/${_id}`))
+         .then(({ data }) => navigate(`/watching/${data._id}`))
          .catch(({ data }) => navigate(`/watching/${data._id}`));
    };
 

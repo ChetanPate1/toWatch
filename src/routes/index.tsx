@@ -34,20 +34,12 @@ const router = createHashRouter([
         element: <Movies />,
       },
       {
-        path: "/movies/:id",
-        element: <MovieDetail />,
-      },
-      {
         path: "/watched-shows",
         element: <Watched />,
       },
       {
-        path: "/watching",
+        path: "/watching/:id?",
         element: <Watching />,
-      },
-      {
-        path: "/watching/:id",
-        element: <WatchingDetail />,
       },
       {
         path: "*",
