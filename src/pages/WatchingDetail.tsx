@@ -18,7 +18,7 @@ type Props = {
 
 const WatchingDetail = (props: Props) => {
    const [episodes, setEpisodes] = useState([]);
-   const [activeEpisode, setActiveEpisode] = useState({ _id: '', number: 1, season: { _id: 1 } });
+   const activeEpisode = useRef({ _id: '', number: 1, season: { _id: 1 } });
    const [activeSeason, setActiveSeason] = useState({ _id: '', number: 1 });
    const [fetchShowDetails, { isLoading: isFetching, data }] = useFetchShowDetailsMutation();
    const [fetchEpisodesForSeason] = useFetchEpisodesForSeasonMutation();
@@ -28,7 +28,7 @@ const WatchingDetail = (props: Props) => {
       fetchShowDetails(props.watchingId)
          .unwrap()
          .then((data) => {
-            setActiveEpisode(data.episode);
+            activeEpisode.current = data.episode;
             onSeasonChange(data.episode.season);
          })
          .catch((err) => {
@@ -42,7 +42,7 @@ const WatchingDetail = (props: Props) => {
       fetchEpisodesForSeason(season._id)
          .unwrap()
          .then((data) => {
-            setEpisodes(markAsWatched(data, activeEpisode));
+            setEpisodes(markAsWatched(data, activeEpisode.current));
          });
    };
 
@@ -50,7 +50,8 @@ const WatchingDetail = (props: Props) => {
       toggleWatchingShowEpisode({ watchingId: props.watchingId, episodeId: episode._id })
          .unwrap()
          .then((data) => {
-            setActiveEpisode(data.episode);
+            activeEpisode.current = data.episode;
+
             setEpisodes(markAsWatched(episodes, data.episode));
          });
    };
