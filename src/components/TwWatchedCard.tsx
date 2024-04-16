@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react';
 import TwCard from './base/TwCard';
 import TwCircleButton from './base/TwCircleButton';
 import { Fragment } from 'react';
-import { ArchiveBoxIcon, EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 type onType = {
   season: number;
@@ -84,10 +84,12 @@ const TwWatchedCard = (props: Props) => {
         {renderStatus()}
       </div>
 
-      <h5 className="text-sm text-white tracking-wide font-semibold mt-1">{props.name}</h5>
+      <h5 className="w-full text-sm text-white tracking-wide font-semibold mt-1 text-nowrap text-ellipsis pr-4 overflow-hidden"
+        title={props.name}>{props.name}</h5>
 
       <p className="text-sm text-gray-400 mb-1">{formatOn(props.on)}</p>
-      <p className="text-xs text-gray-400 mb-2">{props.on.name}</p>
+      <p className="text-xs text-gray-400 mb-2 text-nowrap text-ellipsis pr-4 overflow-hidden"
+        title={props.on.name}>{props.on.name}</p>
 
       <div className="h-[8px] w-full rounded-full relative overflow-hidden mr-2 border-[2px] border-zinc-800">
         <div className="absolute top-0 left-0 h-full rounded-full bg-indigo-600" style={{ width: `${props.percentage}%` }} />

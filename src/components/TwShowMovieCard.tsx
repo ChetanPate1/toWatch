@@ -28,7 +28,7 @@ const TwShowMovieCard = (props: Props) => {
     if (props.onPlay) {
       return (
         <TwCircleButton
-          className="absolute bottom-3 right-2 transform-gpu"
+          className="absolute bottom-3 right-2 transform-gpu border-none"
           type="play"
           size="xs"
           onClick={props.onPlay}
@@ -46,7 +46,7 @@ const TwShowMovieCard = (props: Props) => {
     >
       {renderPlayButton()}
 
-      <h5 className="absolute top-5 left-5 z-40 text-white text-lg font-medium tracking-wide">
+      <h5 className="absolute w-full top-5 left-0 z-40 text-white text-lg font-medium tracking-wide text-nowrap text-ellipsis overflow-hidden px-5" title={props.name}>
         {props.name}
       </h5>
       <div className="absolute h-3/6 w-full top-0 left-0 opacity-80 bg-gradient-to-b from-zinc-900 z-30"></div>
@@ -68,7 +68,7 @@ const TwShowMovieCard = (props: Props) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-90"
         >
-          <Menu.Items className="absolute right-0 z-10 mt-2 w-40origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="p-1">
               {props.onWatched ? (
                 <Menu.Item as="button" className="flex items-center w-full pl-3 pr-4 py-2 text-sm rounded text-gray-700 hover:bg-indigo-100" onClick={(e) => { e.preventDefault(); props.onWatched() }}>

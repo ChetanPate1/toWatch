@@ -1,5 +1,5 @@
 // Core
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // Local
 import TwContainer from '../components/base/TwContainer';
 import TwCircleButton from '../components/base/TwCircleButton';
@@ -8,7 +8,7 @@ import TwEpisodeListItem from '../components/watching/TwEpisodeListItem';
 import TwSeriesButtonSelect from '../components/watching/TwSeriesButtonSelect';
 import TwPageLoader from '../components/page-loader';
 import TwBadge from '../components/base/TwBadge';
-import { useFetchShowDetailsQuery, useToggleWatchingShowEpisodeMutation } from "../app/api/towatch/watching";
+import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "../app/api/towatch/watching";
 import { useFetchEpisodesForSeasonMutation } from '../app/api/towatch/lookups';
 
 type Props = {
@@ -18,29 +18,41 @@ type Props = {
 
 const WatchingDetail = (props: Props) => {
    const [episodes, setEpisodes] = useState([]);
+   const [activeEpisode, setActiveEpisode] = useState({ _id: '', number: 1, season: { _id: 1 } });
    const [activeSeason, setActiveSeason] = useState({ _id: '', number: 1 });
-   const { data, isFetching, refetch } = useFetchShowDetailsQuery(props.watchingId);
+   const [fetchShowDetails, { isLoading: isFetching, data }] = useFetchShowDetailsMutation();
    const [fetchEpisodesForSeason] = useFetchEpisodesForSeasonMutation();
    const [toggleWatchingShowEpisode] = useToggleWatchingShowEpisodeMutation();
 
    useEffect(() => {
-      if (data?.episode?.season) {
-         onSeasonChange(data.episode.season);
-      }
-   }, [data]);
+      fetchShowDetails(props.watchingId)
+         .unwrap()
+         .then((data) => {
+            setActiveEpisode(data.episode);
+            onSeasonChange(data.episode.season);
+         })
+         .catch((err) => {
+            console.error(err);
+         });
+   }, []);
 
    const onSeasonChange = (season) => {
       setActiveSeason(season);
-      fetchEpisodesForSeason(season._id).then((res) => {
-         setEpisodes(markAsWatched(res.data));
-      });
+
+      fetchEpisodesForSeason(season._id)
+         .unwrap()
+         .then((data) => {
+            setEpisodes(markAsWatched(data, activeEpisode));
+         });
    };
 
-   const markAsWatched = (episodes) => {
-      return episodes.map(item => ({
-         ...item,
-         watched: item.season == data.episode.season._id && item.number <= data?.episode.number
-      }));
+   const onToggleWatchingShowEpisode = (episode) => {
+      toggleWatchingShowEpisode({ watchingId: props.watchingId, episodeId: episode._id })
+         .unwrap()
+         .then((data) => {
+            setActiveEpisode(data.episode);
+            setEpisodes(markAsWatched(episodes, data.episode));
+         });
    };
 
    const renderGenres = () => {
@@ -53,27 +65,30 @@ const WatchingDetail = (props: Props) => {
       return null;
    };
 
-   const renderEpisodeList = (item) => {
-      return item.map((item) => (
+   const renderEpisodeList = () => {
+      return episodes.map((item) => (
          <TwEpisodeListItem
             key={item.id}
             episode={item.number}
             title={item.name}
             watched={item.watched}
-            onToggle={() => {
-               toggleWatchingShowEpisode({ watchingId: data._id, episodeId: item._id })
-                  .unwrap()
-                  .then(() => refetch());
-            }}
+            onToggle={() => onToggleWatchingShowEpisode(item)}
          />
       ));
    };
 
-   if (!data) return null;
+   const markAsWatched = (episodes, on) => {
+      return episodes.map((item) => ({
+         ...item,
+         watched: item.season == on.season._id && item.number <= on.number
+      }));
+   };
 
    if (isFetching) {
       return <TwPageLoader />;
    }
+
+   if (!data) return null;
 
    return (
       <div className="flex">
@@ -108,7 +123,7 @@ const WatchingDetail = (props: Props) => {
                </TwCard>
 
                <TwCard className="min-h-96 w-full max-h-[444px] overflow-y-auto scrollbar-none py-1">
-                  {renderEpisodeList(episodes)}
+                  {renderEpisodeList()}
                </TwCard>
             </div>
          </div>
