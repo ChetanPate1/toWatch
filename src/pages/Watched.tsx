@@ -40,7 +40,9 @@ const Watched = () => {
    const handleScroll = () => {
       if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
 
-      dispatch(fetchWatchedShowsPagination());
+      if (!isFetching) {
+         dispatch(fetchWatchedShowsPagination());
+      }
    };
 
    const onConfirmDelete = (watched) => {
@@ -49,13 +51,13 @@ const Watched = () => {
 
    const handleContinue = (watched) => {
       continueWatchingShow(watched.showId).unwrap()
-         .then(({ data }) => navigate(`/watching/${data._id}`))
+         .then((data) => navigate(`/watching/${data._id}`))
          .catch(({ data }) => navigate(`/watching/${data._id}`));
    };
 
    const handleRewatch = (watched) => {
       rewatchShow(watched.showId).unwrap()
-         .then(({ _id }) => navigate(`/watching/${_id}`))
+         .then((data) => navigate(`/watching/${data._id}`))
          .catch(({ data }) => navigate(`/watching/${data._id}`));
    };
 
