@@ -28,7 +28,6 @@ const Watching = () => {
    const searchShow = useRef({});
    const watchingDetail = useRef({});
    const [watchingId, setWatchingId] = useState('');
-
    const [updateShow] = useUpdateShowMutation();
    const { data: showTypes } = useFetchShowTypesQuery(null);
    const [deleteShowFromWatching] = useDeleteShowFromWatchingMutation();
