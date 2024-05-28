@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from '../app/store';
 import { useDeleteShowFromWatchingMutation } from "../app/api/towatch/watching";
 import { useFetchShowTypesQuery } from '../app/api/towatch/lookups';
 import { fetchWatching, fetchWatchingPagination } from '../app/features/watchingSlice';
+import { useUpdateShowMutation } from '../app/api/towatch/shows';
 
 const Watching = () => {
    const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ const Watching = () => {
    const watchingDetail = useRef({});
    const [watchingId, setWatchingId] = useState('');
 
+   const [updateShow] = useUpdateShowMutation();
    const { data: showTypes } = useFetchShowTypesQuery(null);
    const [deleteShowFromWatching] = useDeleteShowFromWatchingMutation();
 
@@ -60,6 +62,15 @@ const Watching = () => {
       watchingDetail.current.open();
    };
 
+   const onRefresh = (showId: string) => {
+      dispatch(updateShow(showId));
+   };
+
+   const onAddShow = (watchingId: string) => {
+      dispatch(fetchWatching());
+      onWatchingDetail(watchingId);
+   };
+
    const renderContent = () => {
       if (isFetching) {
          return <TwPageLoader />;
@@ -69,17 +80,21 @@ const Watching = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {list.map((item) => (
-                  <TwShowMovieCard
+                  <a className="w-full hover:cursor-pointer"
                      key={item._id}
-                     name={item.show.name}
-                     image={item.show.image.medium}
-                     onDelete={() => {
-                        confirmModal.current.open();
-                        selectedShow.current = item;
-                     }}
-                     onPlay={() => onWatchingDetail(item._id)}
-                     deleteable
-                  />
+                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); onWatchingDetail(item._id) }}>
+                     <TwShowMovieCard
+                        key={item._id}
+                        name={item.show.name}
+                        image={item.show.image.medium}
+                        onDelete={() => {
+                           confirmModal.current.open();
+                           selectedShow.current = item;
+                        }}
+                        onRefresh={() => onRefresh(item.show._id)}
+                        deleteable
+                     />
+                  </a>
                ))}
             </div>
          );
@@ -104,7 +119,7 @@ const Watching = () => {
 
    return (
       <TwContainer className="mt-24">
-         <TwSearchShowNavigation reference={searchShow} />
+         <TwSearchShowNavigation reference={searchShow} onAddShow={onAddShow} />
 
          <h1 className="sr-only">Watching</h1>
 

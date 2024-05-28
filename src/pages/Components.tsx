@@ -8,7 +8,6 @@ import TwCircleButton from "../components/base/TwCircleButton";
 import TwEpisodeListItem from "../components/watching/TwEpisodeListItem";
 import TwSearchResultItem from "../components/search/TwSearchResultItem";
 import TwSwitch from "../components/base/TwSwitch";
-import TwWatchingCard from "../components/TwWatchingCard";
 
 const data = {
    episodes:
@@ -654,15 +653,6 @@ const Components = () => {
                <TwCard className="mb-5">
                   <span className="text-white">tw-card</span>
                </TwCard>
-
-               <TwWatchingCard
-                  className="mb-5"
-                  name="Wednesday"
-                  episode-title="Chapter III: Friend or Woe" on="Season 01 Episode 03"
-                  image="https://static.tvmaze.com/uploads/images/original_untouched/433/1082578.jpg" onDelete=""
-                  onRewatch=""
-                  onContinue=""
-               />
             </div>
 
             <div>

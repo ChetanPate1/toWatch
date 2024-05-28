@@ -57,7 +57,9 @@ const Movies = () => {
          return (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
                {list.map((item) => (
-                  <a className="w-full hover:cursor-pointer" key={item._id} onClick={() => onMovieDetail(item.movie._id)}>
+                  <a className="w-full hover:cursor-pointer"
+                     key={item._id}
+                     onClick={(e) => { e.preventDefault(); e.stopPropagation(); onMovieDetail(item.movie._id) }}>
                      <TwShowMovieCard
                         key={item.movie._id}
                         name={item.movie.title}

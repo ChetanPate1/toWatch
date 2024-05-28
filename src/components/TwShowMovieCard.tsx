@@ -14,7 +14,7 @@ type Props = {
   deleteable: boolean;
   onDelete: () => void;
   onWatched?: () => void;
-  onPlay?: () => void;
+  onRefresh?: () => void;
   className?: string;
 };
 
@@ -25,13 +25,13 @@ const TwShowMovieCard = (props: Props) => {
   );
 
   const renderPlayButton = () => {
-    if (props.onPlay) {
+    if (props.onRefresh) {
       return (
         <TwCircleButton
           className="absolute bottom-3 right-2 transform-gpu border-none"
-          type="play"
+          type="arrow-down-circle"
           size="xs"
-          onClick={props.onPlay}
+          onClick={(e) => { e.stopPropagation(); props.onRefresh() }}
         />
       );
     }
@@ -53,7 +53,7 @@ const TwShowMovieCard = (props: Props) => {
 
       <Menu as="div" className="absolute top-2 right-2 z-40 inline-block text-left">
         <div>
-          <Menu.Button className="flex items-center">
+          <Menu.Button className="flex items-center" onClick={(e) => { e.stopPropagation(); }}>
             <span className="sr-only">Open options</span>
             <EllipsisVerticalIcon className="h-5 w-5 text-white" aria-hidden="true" />
           </Menu.Button>
@@ -71,11 +71,12 @@ const TwShowMovieCard = (props: Props) => {
           <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="p-1">
               {props.onWatched ? (
-                <Menu.Item as="button" className="flex items-center w-full pl-3 pr-4 py-2 text-sm rounded text-gray-700 hover:bg-indigo-100" onClick={(e) => { e.preventDefault(); props.onWatched() }}>
+                <Menu.Item as="button" className="flex items-center w-full pl-3 pr-4 py-2 text-sm rounded text-gray-700 hover:bg-indigo-100"
+                  onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.onWatched() }}>
                   <ArchiveBoxIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" /> Watched
                 </Menu.Item>
               ) : null}
-              <Menu.Item as="button" className="flex items-center w-full pl-3 pr-4 py-2 text-sm text-gray-700 hover:bg-red-100" onClick={(e) => { e.preventDefault(); props.onDelete() }}>
+              <Menu.Item as="button" className="flex items-center w-full pl-3 pr-4 py-2 text-sm text-gray-700 hover:bg-red-100" onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.onDelete() }}>
                 <TrashIcon className="mr-3 h-5 w-5 text-gray-400" aria-hidden="true" /> Delete
               </Menu.Item>
             </div>

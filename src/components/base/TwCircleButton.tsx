@@ -1,6 +1,6 @@
 // Third party
 import classNames from 'classnames';
-import { PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon, EyeIcon, BackwardIcon, CheckIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon, EyeIcon, BackwardIcon, CheckIcon, ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 
 type Props = {
   type: string;
@@ -82,6 +82,10 @@ const TwCircleButton = (props: Props) => {
 
     if (props.type == 'check') {
       return <CheckIcon className={sizeClass} aria-hidden="true" />;
+    }
+
+    if (props.type == 'arrow-down-circle') {
+      return <ArrowDownCircleIcon className={sizeClass} aria-hidden="true" />;
     }
 
     return null;

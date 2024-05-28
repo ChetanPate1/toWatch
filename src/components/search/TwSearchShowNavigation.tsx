@@ -18,6 +18,7 @@ import { useAddShowToWatchingMutation } from "../../app/api/towatch/watching";
 
 type Props = {
   reference: any;
+  onAddShow: (watchingId: string) => void;
 };
 
 const TwSearchShowNavigation = (props: Props) => {
@@ -78,8 +79,9 @@ const TwSearchShowNavigation = (props: Props) => {
 
   const onAddShow = () => {
     addShowToWatching({ showId: selectedShow._id, episodeId: activeEpisode._id }).unwrap()
-      .then(({ watching }) => navigate(`/watching/${watching._id}`))
-      .catch(({ data }) => navigate(`/watching/${data.watching._id}`));
+      .then(({ watching }) => props.onAddShow(watching._id))
+      .catch(({ data }) => props.onAddShow(data.watching._id))
+      .finally(episodeSelectModal.current.close);
   };
 
   const debouncedOnChange = debounce(onChangeSearchText, 1000);
