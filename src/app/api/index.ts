@@ -40,12 +40,9 @@ const baseQueryWithResponseHeaderWatcher: BaseQueryFn<
   const result = await baseQuery(args, api, extraOptions);
 
   if (result?.error) {
-    console.log("baseQueryWithResponseHeaderWatcher error", result);
-
     if (result.error.status === 401) {
       // Logout user
       api.dispatch(storageUpdate({ prop: "token", value: "" }));
-      // api.dispatch(createError({ title: "Error", message: "Unauthorized" }));
     }
   }
 

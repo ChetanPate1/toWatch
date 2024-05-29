@@ -11,7 +11,7 @@ import Empty from '@/components/empty';
 import TwPageLoader from '@/components/page-loader';
 import TwReachedEnd from '@/components/reached-end';
 import FullScreen from '@/components/modals/FullScreen';
-import WatchingDetail from './WatchingDetail';
+import WatchingDetail from '@/pages/WatchingDetail';
 
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import { useDeleteShowFromWatchingMutation } from "@/app/api/watching";

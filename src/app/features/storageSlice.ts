@@ -33,7 +33,8 @@ export const slice = createSlice({
     builder
       .addCase(storageInitilize.fulfilled, (_state, action) => action.payload)
       .addCase(storageUpdate.fulfilled, (state, action) => {
-        return { ...state, ...action.payload };
+        state[action.payload.prop] = action.payload.value;
+        return state;
       });
   },
 });

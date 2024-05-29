@@ -8,11 +8,12 @@ import Empty from '@/components/empty';
 import TwReachedEnd from '@/components/reached-end';
 import TwSearchMovieNavigation from '@/components/search/TwSearchMovieNavigation';
 import TwPageLoader from '@/components/page-loader';
+import FullScreen from '@/components/modals/FullScreen';
+import MovieDetail from '@/pages/MovieDetail';
+
 import { useDeleteMovieFromCollectionMutation } from '@/app/api/movies';
 import { fetchMovieCollection, fetchMovieCollectionPagination } from '@/app/features/movieSlice';
 import { useAppDispatch, useAppSelector } from '@/app/store';
-import FullScreen from '@/components/modals/FullScreen';
-import MovieDetail from './MovieDetail';
 
 
 const Movies = () => {

@@ -28,8 +28,8 @@ export const authApi = apiSlice.injectEndpoints({
         try {
           const { data }: LoginResponse = await queryFulfilled;
 
-          dispatch(storageUpdate({ prop: "token", value: data.token }));
-          dispatch(storageUpdate({ prop: "email", value: data.email }));
+          await dispatch(storageUpdate({ prop: "token", value: data.token }));
+          await dispatch(storageUpdate({ prop: "email", value: data.email }));
         } catch (error) {
           console.log(error);
         }

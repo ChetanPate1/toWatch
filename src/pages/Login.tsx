@@ -1,25 +1,73 @@
 // Core
-import { useState } from 'react';
+import { useEffect } from 'react';
+// Third Party
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 // Local
-import TwCard from '@/components/base/TwCard';
-import TwFormLabel from '@/components/base/TwFormLabel';
-import TwFormField from '@/components/base/TwFormField';
-import TwButton from '@/components/base/TwButton';
+import {
+   Form,
+   FormControl,
+   FormField,
+   FormItem,
+   FormLabel,
+   FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
 import { useLoginMutation } from '@/app/api/auth';
+import { useAppSelector } from '@/app/store';
+import { useNavigate } from 'react-router-dom';
+
+const FormSchema = z.object({
+   email: z.string().email({
+      message: "Email is invalid.",
+   }),
+   password: z.string()
+});
 
 const Login = () => {
+   const navigate = useNavigate();
+   const { token } = useAppSelector((state) => state.storage);
+   const { toast } = useToast();
    const [login] = useLoginMutation();
-   const [form, setForm] = useState({
-      email: '',
-      password: ''
+
+   useEffect(() => {
+      if (token) {
+         navigate(-1);
+      }
+   }, []);
+
+   const form = useForm<z.infer<typeof FormSchema>>({
+      resolver: zodResolver(FormSchema),
+      defaultValues: {
+         email: '',
+         password: ''
+      },
    });
 
-   const onChangeText = (prop: string, value: string) => {
-      setForm({ ...form, [prop]: value });
+   const onSubmit = (data: z.infer<typeof FormSchema>) => {
+      login(data).unwrap()
+         .then(() => {
+            navigate('/watching');
+            toast({
+               title: "Success!",
+               description: "You've been successfully logged in."
+            });
+         })
+         .catch(() => {
+            toast({
+               title: "Uh oh! Something went wrong.",
+               description: "There was a problem with your request."
+            });
+         });
    };
 
    return (
-      <div className="relative mx-auto flex flex-col items-center w-full max-w-xl mt-12 sm:mt-16">
+      <div className="relative mx-auto flex flex-col items-center w-full max-w-md mt-12 sm:mt-16">
          <svg viewBox="0 0 1090 1090" aria-hidden="true" fill="none" preserveAspectRatio="none" width="1090" height="1090" className="absolute -top-7 left-1/2 -z-10 h-[788px] -translate-x-1/2 stroke-gray-300/30 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:-top-9 sm:h-auto">
             <circle cx="545" cy="545" r="544.5"></circle>
             <circle cx="545" cy="545" r="480.5"></circle>
@@ -27,29 +75,53 @@ const Login = () => {
             <circle cx="545" cy="545" r="352.5"></circle>
          </svg>
 
-         <TwCard className="w-full p-14">
-            <h2 className="mb-10 text-center text-3xl font-bold tracking-tight text-white">
-               Sign in to your account
-            </h2>
+         <Card className="w-full">
+            <CardHeader>
+               <CardTitle>Sign in to your account</CardTitle>
+               <CardDescription>Keep track of your favourite shows</CardDescription>
+            </CardHeader>
 
-            <form name="signinForm" noValidate>
-               <div className="mb-4">
-                  <TwFormLabel for="email">Email</TwFormLabel>
-                  <TwFormField id="email" onChange={(text) => onChangeText('email', text)} />
-               </div>
+            <CardContent>
+               <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                     <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                           <FormItem>
+                              <FormLabel>Email</FormLabel>
+                              <FormControl>
+                                 <Input placeholder="Enter your email..." {...field} />
+                              </FormControl>
+                              <FormMessage />
+                           </FormItem>
+                        )}
+                     />
 
-               <div className="mb-4">
-                  <div className="grid grid-cols-2">
-                     <TwFormLabel for="password">Password</TwFormLabel>
-                     <button className="text-right text-xs hover:text-indigo-600" type="button"
-                        onClick={() => { }}>Forgotten your password?</button>
-                  </div>
-                  <TwFormField id="password" type="password" onChange={(text) => onChangeText('password', text)} />
-               </div>
+                     <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                           <FormItem>
+                              <div className="grid grid-cols-2">
+                                 <FormLabel>Password</FormLabel>
+                                 <button className="text-right text-xs hover:text-indigo-600" type="button"
+                                    onClick={() => { }}>Forgotten your password?</button>
+                              </div>
 
-               <TwButton type="button" onClick={() => login(form)} className="w-full mt-7">Sign in</TwButton>
-            </form>
-         </TwCard>
+                              <FormControl>
+                                 <Input placeholder="Enter your password..." {...field} type="password" />
+                              </FormControl>
+                              <FormMessage />
+                           </FormItem>
+                        )}
+                     />
+
+                     <Button type="submit" className="w-full mt-7">Submit</Button>
+                  </form>
+               </Form>
+            </CardContent>
+         </Card>
       </div>
    );
 };

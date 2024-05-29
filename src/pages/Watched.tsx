@@ -17,7 +17,6 @@ import {
 } from '@/app/api/watched-shows';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import { fetchWatchedShows, fetchWatchedShowsPagination } from '@/app/features/watchedShowSlice';
-import { Button } from '@/components/ui/button';
 
 const Watched = () => {
    const navigate = useNavigate();
@@ -112,7 +111,7 @@ const Watched = () => {
          <TwSearchShowNavigation reference={searchShow} onAddShow={() => { }} />
 
          <h1 className="sr-only">Watched</h1>
-         <Button>Shadcn</Button>
+
          {renderContent()}
          {renderListEnd()}
 

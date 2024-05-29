@@ -8,6 +8,7 @@ import Movies from "@/pages/Movies";
 import Watched from "@/pages/Watched";
 import Watching from "@/pages/Watching";
 import ErrorPage from "@/pages/ErrorPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createHashRouter([
   {
@@ -29,20 +30,31 @@ const router = createHashRouter([
       },
       {
         path: "/movies",
-        element: <Movies />,
+        element: (
+          <ProtectedRoute>
+            <Movies />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/watched-shows",
-        element: <Watched />,
+        element: (
+          <ProtectedRoute>
+            <Watched />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/watching/:id?",
-        element: <Watching />,
+        element: (
+          <ProtectedRoute>
+            <Watching />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "*",
         element: <Login />,
-
       }
     ],
   },
