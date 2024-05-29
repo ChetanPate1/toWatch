@@ -1,5 +1,5 @@
 // Local
-import { storageUpdate } from "../../features/storageSlice";
+import { storageUpdate } from "@/app/features/storageSlice";
 import { apiSlice } from "./";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;

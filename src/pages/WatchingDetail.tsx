@@ -1,15 +1,14 @@
 // Core
 import { useEffect, useRef, useState } from 'react';
 // Local
-import TwContainer from '../components/base/TwContainer';
-import TwCircleButton from '../components/base/TwCircleButton';
-import TwCard from '../components/base/TwCard';
-import TwEpisodeListItem from '../components/watching/TwEpisodeListItem';
-import TwSeriesButtonSelect from '../components/watching/TwSeriesButtonSelect';
-import TwPageLoader from '../components/page-loader';
-import TwBadge from '../components/base/TwBadge';
-import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "../app/api/towatch/watching";
-import { useFetchEpisodesForSeasonMutation } from '../app/api/towatch/lookups';
+import TwCircleButton from '@/components/base/TwCircleButton';
+import TwCard from '@/components/base/TwCard';
+import TwEpisodeListItem from '@/components/watching/TwEpisodeListItem';
+import TwSeriesButtonSelect from '@/components/watching/TwSeriesButtonSelect';
+import TwPageLoader from '@/components/page-loader';
+import TwBadge from '@/components/base/TwBadge';
+import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "@/app/api/towatch/watching";
+import { useFetchEpisodesForSeasonMutation } from '@/app/api/towatch/lookups';
 
 type Props = {
    onBack: () => void;

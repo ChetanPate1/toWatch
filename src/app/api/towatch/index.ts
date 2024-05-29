@@ -7,8 +7,8 @@ import {
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
 // Local
-import { RootState } from "../../../app/store";
-import { storageUpdate } from "../../features/storageSlice";
+import { RootState } from "@/app/store";
+import { storageUpdate } from "@/app/features/storageSlice";
 
 const thirdPartyEndpoint = ["findShows", "findMovies"];
 

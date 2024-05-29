@@ -4,21 +4,29 @@ import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
+  const defaultConfig = {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  };
+
   if (command === "serve") {
     return {
       // dev specific config
+      ...defaultConfig,
       plugins: [react()],
       server: {
         port: 8080,
       },
-      "@": path.resolve(__dirname, "./src"),
     };
   } else {
     // command === 'build'
     return {
       // build specific config
+      ...defaultConfig,
       base: "/toWatch/",
-      "@": path.resolve(__dirname, "./src"),
     };
   }
 });

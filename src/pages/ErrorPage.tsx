@@ -1,7 +1,7 @@
 // Third Party
 import { useRouteError } from "react-router-dom";
 // Local
-import TwContainer from '../components/base/TwContainer';
+import TwContainer from '@/components/base/TwContainer';
 
 type ErrorType = {
    statusText: string;

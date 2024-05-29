@@ -1,10 +1,8 @@
-// Core
-
 // Third party
 import { EyeIcon, FilmIcon, TvIcon } from '@heroicons/react/24/outline';
 import { NavLink } from "react-router-dom";
 // Local
-import { useAppSelector } from '../app/store';
+import { useAppSelector } from '@/app/store';
 
 const navigation = [
   { name: 'Movie Collection', to: '/movies', icon: <FilmIcon className="h-6 w-6 text-white" /> },

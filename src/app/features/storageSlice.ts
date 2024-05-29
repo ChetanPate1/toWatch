@@ -6,7 +6,7 @@ import {
   updateStorage,
   StorageType,
   storagePayload,
-} from "../../services/storage";
+} from "@/services/storage";
 
 const initialState: StorageType = {};
 

@@ -1,5 +1,5 @@
 // Local
-import TwCircleButton from "../base/TwCircleButton";
+import TwCircleButton from "@/components/base/TwCircleButton";
 
 type Props = {
   episode: number;

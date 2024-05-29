@@ -3,20 +3,20 @@ import { useEffect, useRef } from 'react';
 // Third Party
 import { useNavigate } from 'react-router-dom';
 // Local
-import TwContainer from '../components/base/TwContainer';
-import TwWatchedCard from '../components/TwWatchedCard';
-import Confirm from '../components/modals/Confirm';
-import Empty from '../components/empty';
-import TwPageLoader from '../components/page-loader';
-import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
-import TwReachedEnd from '../components/reached-end';
+import TwContainer from '@/components/base/TwContainer';
+import TwWatchedCard from '@/components/TwWatchedCard';
+import Confirm from '@/components/modals/Confirm';
+import Empty from '@/components/empty';
+import TwPageLoader from '@/components/page-loader';
+import TwSearchShowNavigation from '@/components/search/TwSearchShowNavigation';
+import TwReachedEnd from '@/components/reached-end';
 import {
    useContinueWatchingShowMutation,
    useDeleteWatchedShowMutation,
    useRewatchShowMutation
-} from '../app/api/towatch/watched-shows';
-import { useAppDispatch, useAppSelector } from '../app/store';
-import { fetchWatchedShows, fetchWatchedShowsPagination } from '../app/features/watchedShowSlice';
+} from '@/app/api/towatch/watched-shows';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import { fetchWatchedShows, fetchWatchedShowsPagination } from '@/app/features/watchedShowSlice';
 import { Button } from '@/components/ui/button';
 
 const Watched = () => {

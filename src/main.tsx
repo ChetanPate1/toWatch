@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom/client";
 // Third party
 import { Provider } from "react-redux";
 // Local
-import { store } from "../src/app/store";
+import { store } from "@/app/store";
 import App from "./App";
 import "./index.css";
 

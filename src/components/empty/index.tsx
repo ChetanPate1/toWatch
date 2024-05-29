@@ -1,7 +1,7 @@
-// Local
-import TwButton from "../base/TwButton";
 // Thirty party
 import { PlusIcon } from "@heroicons/react/24/outline";
+// Local
+import TwButton from "@/components/base/TwButton";
 
 type Props = {
    buttonName: string;

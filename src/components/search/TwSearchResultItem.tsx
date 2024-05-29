@@ -1,6 +1,6 @@
 // Local
-import TwCircleButton from "../base/TwCircleButton";
-import TwBadge from "../base/TwBadge";
+import TwCircleButton from "@/components/base/TwCircleButton";
+import TwBadge from "@/components/base/TwBadge";
 
 type Props = {
    name: string;

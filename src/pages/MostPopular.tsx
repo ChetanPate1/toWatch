@@ -1,10 +1,10 @@
 // Core
 import { useState } from 'react';
 // Local
-import TwContainer from '../components/base/TwContainer';
-import TwShowMovieCard from '../components/TwShowMovieCard';
-import { useAppDispatch, useAppSelector } from '../app/store';
-import { fetchMostPopular } from '../app/features/mostPopularSlice';
+import TwContainer from '@/components/base/TwContainer';
+import TwShowMovieCard from '@/components/TwShowMovieCard';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import { fetchMostPopular } from '@/app/features/mostPopularSlice';
 
 const MostPopular = () => {
    const dispatch = useAppDispatch();

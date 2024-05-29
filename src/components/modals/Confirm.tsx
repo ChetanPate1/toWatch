@@ -2,7 +2,7 @@
 import { Fragment, useState, useImperativeHandle } from "react";
 // Third Party
 import { Dialog, Transition } from "@headlessui/react";
-import TwButton from "../base/TwButton";
+import TwButton from "@/components/base/TwButton";
 
 type Props = {
    reference: any;

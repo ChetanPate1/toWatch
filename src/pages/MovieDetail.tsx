@@ -1,8 +1,8 @@
 // Local
-import TwPageLoader from '../components/page-loader';
-import TwCircleButton from '../components/base/TwCircleButton';
-import TwBadge from '../components/base/TwBadge';
-import { useFetchMovieQuery } from '../app/api/towatch/movies';
+import TwPageLoader from '@/components/page-loader';
+import TwCircleButton from '@/components/base/TwCircleButton';
+import TwBadge from '@/components/base/TwBadge';
+import { useFetchMovieQuery } from '@/app/api/towatch/movies';
 
 type Props = {
    movieId: string;

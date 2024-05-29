@@ -4,17 +4,17 @@ import { useImperativeHandle, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
-import TwContainer from "../base/TwContainer";
-import TwFormField from "../base/TwFormField";
-import TwLoader from "../base/TwLoader";
+import TwContainer from "@/components/base/TwContainer";
+import TwFormField from "@/components/base/TwFormField";
+import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
-import Base from "../modals/Base";
-import TwCard from "../base/TwCard";
-import TwButton from "../base/TwButton";
-import TwSeriesButtonSelect from "../watching/TwSeriesButtonSelect";
+import Base from "@/components/modals/Base";
+import TwCard from "@/components/base/TwCard";
+import TwButton from "@/components/base/TwButton";
+import TwSeriesButtonSelect from "@/components/watching/TwSeriesButtonSelect";
 
-import { useFindShowsMutation, useSaveShowMutation } from "../../app/api/towatch/shows";
-import { useAddShowToWatchingMutation } from "../../app/api/towatch/watching";
+import { useFindShowsMutation, useSaveShowMutation } from "@/app/api/towatch/shows";
+import { useAddShowToWatchingMutation } from "@/app/api/towatch/watching";
 
 type Props = {
   reference: any;

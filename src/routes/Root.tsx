@@ -1,9 +1,11 @@
+// Core
+import { useEffect } from "react";
 // Third Party
 import { Outlet, useNavigate } from "react-router-dom";
 // Local
-import TwNavigationBar from "../components/TwNavigationBar";
-import { useEffect } from "react";
-import { useAppSelector } from "../app/store";
+import TwNavigationBar from "@/components/TwNavigationBar";
+
+import { useAppSelector } from "@/app/store";
 
 const Root = () => {
    const navigate = useNavigate();

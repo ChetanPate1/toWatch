@@ -1,7 +1,7 @@
 // Third Party
 import classNames from "classnames";
 // Local
-import TwLoader from "../base/TwLoader";
+import TwLoader from "@/components/base/TwLoader";
 
 type Props = {
   className?: string;

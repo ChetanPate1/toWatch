@@ -3,21 +3,21 @@ import { useEffect, useRef, useState } from 'react';
 // Thirty Party
 import { useParams } from 'react-router-dom';
 // Local
-import TwContainer from '../components/base/TwContainer';
-import TwShowMovieCard from '../components/TwShowMovieCard';
-import Confirm from '../components/modals/Confirm';
-import TwSearchShowNavigation from '../components/search/TwSearchShowNavigation';
-import Empty from '../components/empty';
-import TwPageLoader from '../components/page-loader';
-import TwReachedEnd from '../components/reached-end';
-import FullScreen from '../components/modals/FullScreen';
+import TwContainer from '@/components/base/TwContainer';
+import TwShowMovieCard from '@/components/TwShowMovieCard';
+import Confirm from '@/components/modals/Confirm';
+import TwSearchShowNavigation from '@/components/search/TwSearchShowNavigation';
+import Empty from '@/components/empty';
+import TwPageLoader from '@/components/page-loader';
+import TwReachedEnd from '@/components/reached-end';
+import FullScreen from '@/components/modals/FullScreen';
 import WatchingDetail from './WatchingDetail';
 
-import { useAppDispatch, useAppSelector } from '../app/store';
-import { useDeleteShowFromWatchingMutation } from "../app/api/towatch/watching";
-import { useFetchShowTypesQuery } from '../app/api/towatch/lookups';
-import { fetchWatching, fetchWatchingPagination } from '../app/features/watchingSlice';
-import { useUpdateShowMutation } from '../app/api/towatch/shows';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import { useDeleteShowFromWatchingMutation } from "@/app/api/towatch/watching";
+import { useFetchShowTypesQuery } from '@/app/api/towatch/lookups';
+import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
+import { useUpdateShowMutation } from '@/app/api/towatch/shows';
 
 const Watching = () => {
    const dispatch = useAppDispatch();

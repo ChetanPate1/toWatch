@@ -3,13 +3,13 @@ import { useImperativeHandle, useRef } from "react";
 // Thirt Party
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
-import TwContainer from "../base/TwContainer";
-import TwFormField from "../base/TwFormField";
-import TwLoader from "../base/TwLoader";
+import TwContainer from "@/components/base/TwContainer";
+import TwFormField from "@/components/base/TwFormField";
+import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
-import Base from "../modals/Base";
+import Base from "@/components/modals/Base";
 
-import { useFindMoviesMutation, useSaveMovieMutation } from "../../app/api/towatch/movies";
+import { useFindMoviesMutation, useSaveMovieMutation } from "@/app/api/towatch/movies";
 
 type Props = {
   reference: any;

@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 // Local
 import router from "./routes";
-import { useAppDispatch, useAppSelector } from "../src/app/store";
-import { storageInitilize } from "../src/app/features/storageSlice";
-import { appReady } from "./app/features/appSlice";
+import { useAppDispatch, useAppSelector } from "@/app/store";
+import { storageInitilize } from "@/app/features/storageSlice";
+import { appReady } from "@/app/features/appSlice";
 
 const App = () => {
    const dispatch = useAppDispatch();

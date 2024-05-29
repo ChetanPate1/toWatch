@@ -1,17 +1,17 @@
 // Core
 import { useEffect, useRef, useState } from 'react';
 // Local
-import TwContainer from '../components/base/TwContainer';
-import TwShowMovieCard from '../components/TwShowMovieCard';
-import Confirm from '../components/modals/Confirm';
-import Empty from '../components/empty';
-import TwReachedEnd from '../components/reached-end';
-import TwSearchMovieNavigation from '../components/search/TwSearchMovieNavigation';
-import TwPageLoader from '../components/page-loader';
-import { useDeleteMovieFromCollectionMutation } from '../app/api/towatch/movies';
-import { fetchMovieCollection, fetchMovieCollectionPagination } from '../app/features/movieSlice';
-import { useAppDispatch, useAppSelector } from '../app/store';
-import FullScreen from '../components/modals/FullScreen';
+import TwContainer from '@/components/base/TwContainer';
+import TwShowMovieCard from '@/components/TwShowMovieCard';
+import Confirm from '@/components/modals/Confirm';
+import Empty from '@/components/empty';
+import TwReachedEnd from '@/components/reached-end';
+import TwSearchMovieNavigation from '@/components/search/TwSearchMovieNavigation';
+import TwPageLoader from '@/components/page-loader';
+import { useDeleteMovieFromCollectionMutation } from '@/app/api/towatch/movies';
+import { fetchMovieCollection, fetchMovieCollectionPagination } from '@/app/features/movieSlice';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import FullScreen from '@/components/modals/FullScreen';
 import MovieDetail from './MovieDetail';
 
 

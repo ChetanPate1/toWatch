@@ -1,7 +1,7 @@
 // Third party
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // Local
-import { RootState } from "../store";
+import { RootState } from "@/app/store";
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 const initialState = {

@@ -1,13 +1,13 @@
 // Core
 import { useState } from "react";
 // Local
-import TwContainer from "../components/base/TwContainer";
-import TwButton from "../components/base/TwButton";
-import TwCard from "../components/base/TwCard";
-import TwCircleButton from "../components/base/TwCircleButton";
-import TwEpisodeListItem from "../components/watching/TwEpisodeListItem";
-import TwSearchResultItem from "../components/search/TwSearchResultItem";
-import TwSwitch from "../components/base/TwSwitch";
+import TwContainer from "@/components/base/TwContainer";
+import TwButton from "@/components/base/TwButton";
+import TwCard from "@/components/base/TwCard";
+import TwCircleButton from "@/components/base/TwCircleButton";
+import TwEpisodeListItem from "@/components/watching/TwEpisodeListItem";
+import TwSearchResultItem from "@/components/search/TwSearchResultItem";
+import TwSwitch from "@/components/base/TwSwitch";
 
 const data = {
    episodes:
