@@ -1,6 +1,6 @@
 // Local
 import TwCircleButton from "@/components/base/TwCircleButton";
-import TwBadge from "@/components/base/TwBadge";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
    name: string;
@@ -36,7 +36,7 @@ const TwSearchResultItem = (props: Props) => {
                </div>
 
                {props.genres?.map((item) => (
-                  <TwBadge className="mr-2" key={item}>{item}</TwBadge>
+                  <Badge className="mr-2" key={item}>{item}</Badge>
                ))}
 
                <div className="relative mb-4">

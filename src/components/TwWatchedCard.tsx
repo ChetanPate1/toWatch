@@ -1,6 +1,6 @@
 // Local
 import { Menu, Transition } from '@headlessui/react';
-import TwCard from './base/TwCard';
+import { Card } from '@/components/ui/card';
 import TwCircleButton from './base/TwCircleButton';
 import { Fragment } from 'react';
 import { EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
@@ -50,7 +50,7 @@ const TwWatchedCard = (props: Props) => {
   };
 
   return (
-    <TwCard className="w-full max-w-sm min-h-[160px] pt-2 pb-2 pr-3 pl-[134px] relative overflow-hidden">
+    <Card className="w-full max-w-sm min-h-[160px] pt-2 pb-2 pr-3 pl-[134px] relative overflow-hidden">
       <Menu as="div" className="absolute top-2 right-2 z-50 inline-block text-left">
         <div>
           <Menu.Button className="flex items-center">
@@ -109,7 +109,7 @@ const TwWatchedCard = (props: Props) => {
         size="xs"
         onClick={props.onContinue}
       />
-    </TwCard>
+    </Card>
   );
 };
 

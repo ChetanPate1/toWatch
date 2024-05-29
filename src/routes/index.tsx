@@ -1,7 +1,6 @@
 import { createHashRouter } from "react-router-dom";
 
 import Root from "./Root";
-import Components from "@/pages/Components";
 import Login from "@/pages/Login";
 import MostPopular from "@/pages/MostPopular";
 import Movies from "@/pages/Movies";
@@ -16,10 +15,6 @@ const router = createHashRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "/components",
-        element: <Components />,
-      },
       {
         path: "/login",
         element: <Login />,

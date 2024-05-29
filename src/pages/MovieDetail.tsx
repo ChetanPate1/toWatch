@@ -1,7 +1,7 @@
 // Local
 import TwPageLoader from '@/components/page-loader';
 import TwCircleButton from '@/components/base/TwCircleButton';
-import TwBadge from '@/components/base/TwBadge';
+import { Badge } from '@/components/ui/badge';
 import { useFetchMovieQuery } from '@/app/api/movies';
 
 type Props = {
@@ -15,7 +15,7 @@ const MovieDetail = (props: Props) => {
    const renderGenres = () => {
       if (data.genre) {
          return data.genre.split(', ').map((genre: string) => (
-            <TwBadge key={genre} className="ml-1">{genre}</TwBadge>
+            <Badge key={genre} className="ml-1">{genre}</Badge>
          ));
       }
 

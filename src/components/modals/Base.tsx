@@ -1,10 +1,12 @@
 // Core
-import React, { Fragment, useState, useImperativeHandle } from "react";
-// Third Party
-import { Dialog, Transition } from "@headlessui/react";
+import React, { useState, useImperativeHandle } from "react";
+// Local
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 
 type Props = {
    reference: any;
+   title?: string;
+   description?: string;
    children: React.ReactNode;
    onClose: () => void;
 };
@@ -17,40 +19,26 @@ const Base = (props: Props) => {
       close: () => setOpen(false)
    }));
 
-   return (
-      <Transition.Root show={open} as={Fragment}>
-         <Dialog as="div" className="relative z-50" onClose={() => { setOpen(false); props.onClose() }}>
-            <Transition.Child
-               as={Fragment}
-               enter="ease-out duration-300"
-               enterFrom="opacity-0"
-               enterTo="opacity-100"
-               leave="ease-in duration-200"
-               leaveFrom="opacity-100"
-               leaveTo="opacity-0"
-            >
-               <div className="fixed inset-0 bg-neutral-900 bg-opacity-75 transition-opacity" />
-            </Transition.Child>
+   const renderHeader = () => {
+      if (props.title || props.description) {
+         return (
+            <DialogHeader>
+               {props.title && <DialogTitle>{props.title}</DialogTitle>}
+               {props.description && <DialogDescription>{props.description}</DialogDescription>}
+            </DialogHeader>
+         );
+      }
+   }
 
-            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-               <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                  <Transition.Child
-                     as={Fragment}
-                     enter="ease-out duration-300"
-                     enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                     enterTo="opacity-100 translate-y-0 sm:scale-100"
-                     leave="ease-in duration-200"
-                     leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                     leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                  >
-                     <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-neutral-900 border-2 border-zinc-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                        {props.children}
-                     </Dialog.Panel>
-                  </Transition.Child>
-               </div>
-            </div>
-         </Dialog>
-      </Transition.Root>
+   return (
+      <Dialog open={open} onOpenChange={setOpen}>
+         <DialogContent className="sm:max-w-md max-h-3/4 overflow-y-auto">
+            {renderHeader()}
+            <DialogClose onClick={props.onClose} />
+
+            {props.children}
+         </DialogContent>
+      </Dialog>
    );
 };
 

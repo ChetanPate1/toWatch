@@ -1,7 +1,6 @@
 // Core
 import { useImperativeHandle, useRef, useState } from "react";
 // Thirt Party
-import { useNavigate } from "react-router-dom";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
 import TwContainer from "@/components/base/TwContainer";
@@ -9,8 +8,8 @@ import TwFormField from "@/components/base/TwFormField";
 import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
 import Base from "@/components/modals/Base";
-import TwCard from "@/components/base/TwCard";
-import TwButton from "@/components/base/TwButton";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import TwSeriesButtonSelect from "@/components/watching/TwSeriesButtonSelect";
 
 import { useFindShowsMutation, useSaveShowMutation } from "@/app/api/shows";
@@ -25,7 +24,6 @@ const TwSearchShowNavigation = (props: Props) => {
   const addShowModal = useRef({});
   const episodeSelectModal = useRef({});
   const debounceTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const navigate = useNavigate();
   const [selectedShow, setSelectedShow] = useState({});
   const [activeSeason, setActiveSeason] = useState({ number: 1, episodes: [] });
   const [activeEpisode, setActiveEpisode] = useState({ number: 1 });
@@ -118,14 +116,14 @@ const TwSearchShowNavigation = (props: Props) => {
       <TwContainer className="flex flex-row justify-center !mb-0">
         <div className="flex flex-row items-center">
           <MagnifyingGlassIcon className="h-4 w-4 text-zinc-500" aria-hidden="true" />
+
           <button type="button" className="rounded-md px-3 py-5 sm:text-sm text-gray-500" onClick={addShowModal.current.open}>
             Search for a show
           </button>
         </div>
       </TwContainer>
 
-      <Base reference={addShowModal}>
-        <h3 className="text-lg font-semibold leading-6 text-gray-400 mb-2">Track a show</h3>
+      <Base reference={addShowModal} title="Track a show" description="Search for a show to begin">
         <TwFormField
           className="placeholder-gray-600 text-gray-200 bg-transparent !text-xl !p-0 border-none"
           id="searchShow"
@@ -150,30 +148,30 @@ const TwSearchShowNavigation = (props: Props) => {
 
         <h3 className="text-lg font-semibold leading-6 text-gray-400 mt-5 mb-4">Where should we start?</h3>
         <div className="text-gray-300">
-          <TwCard className="rounded-full py-0 px-6 mb-2 flex max-w-full overflow-y-auto">
+          <Card className="rounded-full py-0 px-6 mb-2 flex max-w-full overflow-y-auto">
             <TwSeriesButtonSelect
               buttonPrefix="S"
               list={selectedShow.seasons}
               active={activeSeason.number}
               onChange={(s) => setActiveSeason(s)}
             />
-          </TwCard>
+          </Card>
 
-          <TwCard className="grid grid-cols-5 mb-7">
+          <Card className="grid grid-cols-5 mb-7">
             <TwSeriesButtonSelect
               buttonPrefix="E"
               list={activeSeason.episodes}
               active={activeEpisode.number}
               onChange={(s) => setActiveEpisode(s)}
             />
-          </TwCard>
+          </Card>
 
           <div className="flex flex-col items-end">
-            <TwButton onClick={onAddShow}>
+            <Button onClick={onAddShow}>
               Start from <span className="ml-1 font-thin">
                 {activeSeason.number == 1 && activeEpisode.number == 1 ? 'Beginning' : `Season ${activeSeason.number} Episode ${activeEpisode.number}`}
               </span>
-            </TwButton>
+            </Button>
           </div>
         </div>
       </Base>

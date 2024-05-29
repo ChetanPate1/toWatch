@@ -5,7 +5,7 @@ import { ArchiveBoxIcon, EllipsisVerticalIcon, TrashIcon } from "@heroicons/reac
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 // Local
-import TwCard from './base/TwCard';
+import { Card } from '@/components/ui/card';
 import TwCircleButton from "./base/TwCircleButton";
 
 type Props = {
@@ -40,7 +40,7 @@ const TwShowMovieCard = (props: Props) => {
   };
 
   return (
-    <TwCard
+    <Card
       className={classes}
       style={{ backgroundImage: `url(${props.image})` }}
     >
@@ -84,7 +84,7 @@ const TwShowMovieCard = (props: Props) => {
           </Menu.Items>
         </Transition>
       </Menu>
-    </TwCard>
+    </Card>
   );
 };
 

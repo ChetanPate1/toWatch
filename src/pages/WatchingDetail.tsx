@@ -2,11 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 // Local
 import TwCircleButton from '@/components/base/TwCircleButton';
-import TwCard from '@/components/base/TwCard';
+import { Card } from '@/components/ui/card';
 import TwEpisodeListItem from '@/components/watching/TwEpisodeListItem';
 import TwSeriesButtonSelect from '@/components/watching/TwSeriesButtonSelect';
 import TwPageLoader from '@/components/page-loader';
-import TwBadge from '@/components/base/TwBadge';
+import { Badge } from '@/components/ui/badge';
 import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "@/app/api/watching";
 import { useFetchEpisodesForSeasonMutation } from '@/app/api/lookups';
 
@@ -58,7 +58,7 @@ const WatchingDetail = (props: Props) => {
    const renderGenres = () => {
       if (data.show.genres) {
          return data.show.genres.map((genre: string) => (
-            <TwBadge key={genre} className="ml-1">{genre}</TwBadge>
+            <Badge key={genre} className="ml-1">{genre}</Badge>
          ));
       }
 
@@ -110,21 +110,21 @@ const WatchingDetail = (props: Props) => {
                </h1>
 
                <div className="text-sm text-slate-300 mt-5 mb-7">
-                  {data.show.runtime} mins {renderGenres()}
+                  {data.show.runtime ? `${data.show.runtime} mins` : null}  {renderGenres()}
                </div>
 
-               <TwCard className="grid grid-flow-col rounded-full py-0 px-6 mb-2 w-full overflow-x-auto scrollbar-none">
+               <Card className="grid grid-flow-col rounded-full py-0 px-6 mb-2 w-full overflow-x-auto scrollbar-none">
                   <TwSeriesButtonSelect
                      buttonPrefix="S"
                      list={data?.show?.seasons}
                      active={activeSeason.number}
                      onChange={(s) => onSeasonChange(s)}
                   />
-               </TwCard>
+               </Card>
 
-               <TwCard className="min-h-96 w-full max-h-[444px] overflow-y-auto scrollbar-none py-1">
+               <Card className="min-h-96 w-full max-h-[444px] overflow-y-auto scrollbar-none py-1">
                   {renderEpisodeList()}
-               </TwCard>
+               </Card>
             </div>
          </div>
       </div>
