@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 // Local
-import { apiSlice } from "@/app/api/towatch";
+import { apiSlice } from "@/app/api";
 import appReducer from "@/app/features/appSlice";
 import storageReducer from "@/app/features/storageSlice";
 import mostPopularReducer from "@/app/features/mostPopularSlice";

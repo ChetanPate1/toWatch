@@ -14,10 +14,10 @@ import FullScreen from '@/components/modals/FullScreen';
 import WatchingDetail from './WatchingDetail';
 
 import { useAppDispatch, useAppSelector } from '@/app/store';
-import { useDeleteShowFromWatchingMutation } from "@/app/api/towatch/watching";
-import { useFetchShowTypesQuery } from '@/app/api/towatch/lookups';
+import { useDeleteShowFromWatchingMutation } from "@/app/api/watching";
+import { useFetchShowTypesQuery } from '@/app/api/lookups';
 import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
-import { useUpdateShowMutation } from '@/app/api/towatch/shows';
+import { useUpdateShowMutation } from '@/app/api/shows';
 
 const Watching = () => {
    const dispatch = useAppDispatch();

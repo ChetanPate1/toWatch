@@ -13,8 +13,8 @@ import TwCard from "@/components/base/TwCard";
 import TwButton from "@/components/base/TwButton";
 import TwSeriesButtonSelect from "@/components/watching/TwSeriesButtonSelect";
 
-import { useFindShowsMutation, useSaveShowMutation } from "@/app/api/towatch/shows";
-import { useAddShowToWatchingMutation } from "@/app/api/towatch/watching";
+import { useFindShowsMutation, useSaveShowMutation } from "@/app/api/shows";
+import { useAddShowToWatchingMutation } from "@/app/api/watching";
 
 type Props = {
   reference: any;

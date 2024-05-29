@@ -7,8 +7,8 @@ import TwEpisodeListItem from '@/components/watching/TwEpisodeListItem';
 import TwSeriesButtonSelect from '@/components/watching/TwSeriesButtonSelect';
 import TwPageLoader from '@/components/page-loader';
 import TwBadge from '@/components/base/TwBadge';
-import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "@/app/api/towatch/watching";
-import { useFetchEpisodesForSeasonMutation } from '@/app/api/towatch/lookups';
+import { useFetchShowDetailsMutation, useToggleWatchingShowEpisodeMutation } from "@/app/api/watching";
+import { useFetchEpisodesForSeasonMutation } from '@/app/api/lookups';
 
 type Props = {
    onBack: () => void;

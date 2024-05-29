@@ -14,7 +14,7 @@ import {
    useContinueWatchingShowMutation,
    useDeleteWatchedShowMutation,
    useRewatchShowMutation
-} from '@/app/api/towatch/watched-shows';
+} from '@/app/api/watched-shows';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import { fetchWatchedShows, fetchWatchedShowsPagination } from '@/app/features/watchedShowSlice';
 import { Button } from '@/components/ui/button';

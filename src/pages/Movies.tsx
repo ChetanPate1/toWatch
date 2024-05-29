@@ -8,7 +8,7 @@ import Empty from '@/components/empty';
 import TwReachedEnd from '@/components/reached-end';
 import TwSearchMovieNavigation from '@/components/search/TwSearchMovieNavigation';
 import TwPageLoader from '@/components/page-loader';
-import { useDeleteMovieFromCollectionMutation } from '@/app/api/towatch/movies';
+import { useDeleteMovieFromCollectionMutation } from '@/app/api/movies';
 import { fetchMovieCollection, fetchMovieCollectionPagination } from '@/app/features/movieSlice';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import FullScreen from '@/components/modals/FullScreen';

@@ -5,7 +5,7 @@ import TwCard from '@/components/base/TwCard';
 import TwFormLabel from '@/components/base/TwFormLabel';
 import TwFormField from '@/components/base/TwFormField';
 import TwButton from '@/components/base/TwButton';
-import { useLoginMutation } from '@/app/api/towatch/auth';
+import { useLoginMutation } from '@/app/api/auth';
 
 const Login = () => {
    const [login] = useLoginMutation();

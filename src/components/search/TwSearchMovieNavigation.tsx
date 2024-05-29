@@ -9,7 +9,7 @@ import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
 import Base from "@/components/modals/Base";
 
-import { useFindMoviesMutation, useSaveMovieMutation } from "@/app/api/towatch/movies";
+import { useFindMoviesMutation, useSaveMovieMutation } from "@/app/api/movies";
 
 type Props = {
   reference: any;
