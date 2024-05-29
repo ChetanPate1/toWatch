@@ -1,4 +1,5 @@
 // Local
+import { toast } from "@/components/ui/use-toast";
 import { storageUpdate } from "@/app/features/storageSlice";
 import { apiSlice } from "./";
 
@@ -30,8 +31,16 @@ export const authApi = apiSlice.injectEndpoints({
 
           await dispatch(storageUpdate({ prop: "token", value: data.token }));
           await dispatch(storageUpdate({ prop: "email", value: data.email }));
+          toast({
+            title: "Success!",
+            description: "You've been successfully logged in.",
+          });
         } catch (error) {
           console.log(error);
+          toast({
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with your request.",
+          });
         }
       },
     }),

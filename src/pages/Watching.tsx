@@ -11,6 +11,7 @@ import Empty from '@/components/empty';
 import TwPageLoader from '@/components/page-loader';
 import TwReachedEnd from '@/components/reached-end';
 import FullScreen from '@/components/modals/FullScreen';
+import { toast } from '@/components/ui/use-toast';
 import WatchingDetail from '@/pages/WatchingDetail';
 
 import { useAppDispatch, useAppSelector } from '@/app/store';
@@ -18,6 +19,7 @@ import { useDeleteShowFromWatchingMutation } from "@/app/api/watching";
 import { useFetchShowTypesQuery } from '@/app/api/lookups';
 import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
 import { useUpdateShowMutation } from '@/app/api/shows';
+
 
 const Watching = () => {
    const dispatch = useAppDispatch();
@@ -62,7 +64,12 @@ const Watching = () => {
    };
 
    const onRefresh = (showId: string) => {
-      dispatch(updateShow(showId));
+      updateShow(showId)
+         .then(() => {
+            toast({
+               description: "Show has been updated successfully"
+            })
+         });
    };
 
    const onAddShow = (watchingId: string) => {

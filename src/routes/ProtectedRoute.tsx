@@ -11,7 +11,6 @@ type Props = {
 
 const ProtectedRoute = ({ children }: Props) => {
    const { token } = useAppSelector((state) => state.storage);
-   console.log({ token });
 
    if (!token) {
       // user is not authenticated

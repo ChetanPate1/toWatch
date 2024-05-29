@@ -6,7 +6,7 @@ type Props = {
   type: string;
   size: 'md' | 'xs';
   className?: string;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
 const TwCircleButton = (props: Props) => {

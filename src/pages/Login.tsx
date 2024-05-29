@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 import { useLoginMutation } from '@/app/api/auth';
@@ -32,7 +31,6 @@ const FormSchema = z.object({
 const Login = () => {
    const navigate = useNavigate();
    const { token } = useAppSelector((state) => state.storage);
-   const { toast } = useToast();
    const [login] = useLoginMutation();
 
    useEffect(() => {
@@ -51,19 +49,7 @@ const Login = () => {
 
    const onSubmit = (data: z.infer<typeof FormSchema>) => {
       login(data).unwrap()
-         .then(() => {
-            navigate('/watching');
-            toast({
-               title: "Success!",
-               description: "You've been successfully logged in."
-            });
-         })
-         .catch(() => {
-            toast({
-               title: "Uh oh! Something went wrong.",
-               description: "There was a problem with your request."
-            });
-         });
+         .then(() => navigate('/watching'));
    };
 
    return (

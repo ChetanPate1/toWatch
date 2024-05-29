@@ -34,7 +34,6 @@ export const slice = createSlice({
       .addCase(storageInitilize.fulfilled, (_state, action) => action.payload)
       .addCase(storageUpdate.fulfilled, (state, action) => {
         state[action.payload.prop] = action.payload.value;
-        return state;
       });
   },
 });

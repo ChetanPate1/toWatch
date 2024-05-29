@@ -14,7 +14,7 @@ type Props = {
   deleteable: boolean;
   onDelete: () => void;
   onWatched?: () => void;
-  onRefresh?: () => void;
+  onRefresh: () => void;
   className?: string;
 };
 
@@ -24,7 +24,7 @@ const TwShowMovieCard = (props: Props) => {
     props.className
   );
 
-  const renderPlayButton = () => {
+  const renderRefreshButton = () => {
     if (props.onRefresh) {
       return (
         <TwCircleButton
@@ -44,16 +44,17 @@ const TwShowMovieCard = (props: Props) => {
       className={classes}
       style={{ backgroundImage: `url(${props.image})` }}
     >
-      {renderPlayButton()}
+      {renderRefreshButton()}
 
-      <h5 className="absolute w-full top-5 left-0 z-40 text-white text-lg font-medium tracking-wide text-nowrap text-ellipsis overflow-hidden px-5" title={props.name}>
+      <h5 className="absolute w-full top-5 left-0 z-40 text-white text-lg font-medium tracking-wide text-nowrap text-ellipsis overflow-hidden px-5"
+        title={props.name}>
         {props.name}
       </h5>
       <div className="absolute h-3/6 w-full top-0 left-0 opacity-80 bg-gradient-to-b from-zinc-900 z-30"></div>
 
       <Menu as="div" className="absolute top-2 right-2 z-40 inline-block text-left">
         <div>
-          <Menu.Button className="flex items-center" onClick={(e) => { e.stopPropagation(); }}>
+          <Menu.Button className="flex items-center" onClick={(e) => e.stopPropagation()}>
             <span className="sr-only">Open options</span>
             <EllipsisVerticalIcon className="h-5 w-5 text-white" aria-hidden="true" />
           </Menu.Button>
