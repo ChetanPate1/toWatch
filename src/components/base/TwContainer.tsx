@@ -1,8 +1,10 @@
-import react from 'react';
+// Core
+import React from "react";
+// Thirdy Party
 import classNames from "classnames";
 
 type Props = {
-  children: react.ReactNode;
+  children: React.ReactNode;
   className?: string;
 };
 

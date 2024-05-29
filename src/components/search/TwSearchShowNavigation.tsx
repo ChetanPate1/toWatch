@@ -4,12 +4,12 @@ import { useImperativeHandle, useRef, useState } from "react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
 import TwContainer from "@/components/base/TwContainer";
-import TwFormField from "@/components/base/TwFormField";
 import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
 import Base from "@/components/modals/Base";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import TwSeriesButtonSelect from "@/components/watching/TwSeriesButtonSelect";
 
 import { useFindShowsMutation, useSaveShowMutation } from "@/app/api/shows";
@@ -124,7 +124,7 @@ const TwSearchShowNavigation = (props: Props) => {
       </TwContainer>
 
       <Base reference={addShowModal} title="Track a show" description="Search for a show to begin">
-        <TwFormField
+        <Input
           className="placeholder-gray-600 text-gray-200 bg-transparent !text-xl !p-0 border-none"
           id="searchShow"
           type="text"

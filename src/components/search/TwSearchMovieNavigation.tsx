@@ -4,12 +4,13 @@ import { useImperativeHandle, useRef } from "react";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 // Local
 import TwContainer from "@/components/base/TwContainer";
-import TwFormField from "@/components/base/TwFormField";
 import TwLoader from "@/components/base/TwLoader";
 import TwSearchResultItem from "./TwSearchResultItem";
 import Base from "@/components/modals/Base";
+import { Input } from "@/components/ui/input";
 
 import { useFindMoviesMutation, useSaveMovieMutation } from "@/app/api/movies";
+
 
 type Props = {
   reference: any;
@@ -106,7 +107,7 @@ const TwSearchMovieNavigation = (props: Props) => {
 
       <Base reference={addMovieModal}>
         <h3 className="text-lg font-semibold leading-6 text-gray-400 mb-2">Add a movie</h3>
-        <TwFormField
+        <Input
           className="placeholder-gray-600 text-gray-200 bg-transparent !text-xl !p-0 border-none"
           id="searchShow"
           type="text"

@@ -1,6 +1,9 @@
 // Third party
 import classNames from 'classnames';
-import { PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon, EyeIcon, BackwardIcon, CheckIcon, ArrowDownCircleIcon } from '@heroicons/react/24/outline';
+import {
+  PlusIcon, ArrowPathIcon, TrashIcon, PlayIcon, EyeIcon,
+  BackwardIcon, CheckIcon, ArrowDownCircleIcon
+} from '@heroicons/react/24/outline';
 
 type Props = {
   type: string;

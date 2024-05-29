@@ -1,7 +1,10 @@
 // Core
 import React, { useState, useImperativeHandle } from "react";
 // Local
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
+import {
+   Dialog, DialogContent, DialogHeader,
+   DialogTitle, DialogDescription, DialogClose
+} from "@/components/ui/dialog";
 
 type Props = {
    reference: any;

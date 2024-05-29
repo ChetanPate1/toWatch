@@ -1,5 +1,5 @@
 // Core
-import React, { useState, useImperativeHandle } from "react";
+import { useState, useImperativeHandle } from "react";
 // Local
 import { Dialog, DialogContent, DialogTitle, DialogClose, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
