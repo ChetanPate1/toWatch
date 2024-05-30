@@ -1,14 +1,15 @@
 // Third Party
-import { EllipsisVerticalIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Trash, EllipsisVertical } from "lucide-react";
 // Local
 import { Card } from '@/components/ui/card';
-import TwCircleButton from './base/TwCircleButton';
+import { CircleIconButton } from '@/components/ui/circle-icon-button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 
 type onType = {
   season: number;
@@ -56,16 +57,15 @@ const TwWatchedCard = (props: Props) => {
 
   return (
     <Card className="w-full max-w-sm min-h-[160px] pt-2 pb-2 pr-3 pl-[134px] relative overflow-hidden">
-
       <div className="absolute top-2 right-2 z-50 inline-block text-left">
         <DropdownMenu>
           <DropdownMenuTrigger>
             <span className="sr-only">Open options</span>
-            <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
+            <EllipsisVertical className="h-5 w-5" aria-hidden="true" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <Button variant="destructive" className="w-full" onClick={(e) => { e.preventDefault(); props.onDelete() }}>
-              <TrashIcon className="mr-3 h-5 w-5" aria-hidden="true" /> Delete
+              <Trash className="mr-3 h-5 w-5" aria-hidden="true" /> Delete
             </Button>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -84,22 +84,20 @@ const TwWatchedCard = (props: Props) => {
       <p className="text-xs text-gray-400 mb-2 text-nowrap text-ellipsis pr-4 overflow-hidden"
         title={props.on.name}>{props.on.name}</p>
 
-      <div className="h-[8px] w-full rounded-full relative overflow-hidden mr-2 border-[2px] border-zinc-800">
-        <div className="absolute top-0 left-0 h-full rounded-full bg-indigo-600" style={{ width: `${props.percentage}%` }} />
-      </div>
+      <Progress className="h-[5px]" value={props.percentage} max={100} />
 
       {props.percentage == 100 ? (
-        <TwCircleButton
+        <CircleIconButton
           className="absolute bottom-3 right-[55px] transform-gpu"
-          type="refresh"
-          size="xs"
+          iconName="refresh"
+          sizeClass="h-4 w-4"
           onClick={props.onRewatch}
         />
       ) : null}
-      <TwCircleButton
+      <CircleIconButton
         className="absolute bottom-3 right-2 transform-gpu"
-        type="play"
-        size="xs"
+        iconName="play"
+        sizeClass="h-4 w-4"
         onClick={props.onContinue}
       />
     </Card>

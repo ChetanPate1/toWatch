@@ -1,5 +1,5 @@
 // Local
-import TwCircleButton from "@/components/base/TwCircleButton";
+import { CircleIconButton } from "@/components/ui/circle-icon-button";
 
 type Props = {
   episode: number;
@@ -16,20 +16,20 @@ const TwEpisodeListItem = ({ episode, title, watched, onToggle }: Props) => {
   const renderWatchedButton = () => {
     if (watched) {
       return (
-        <TwCircleButton
+        <CircleIconButton
           className="border-none"
-          type="check"
-          size="xs"
+          iconName="check"
+          sizeClass="h-4 w-4"
           onClick={onToggle}
         />
       );
     }
 
     return (
-      <TwCircleButton
+      <CircleIconButton
         className="bg-transparent border-none hover:bg-transparent text-white hover:text-indigo-300"
-        type="eye"
-        size="xs"
+        iconName="eye"
+        sizeClass="h-4 w-4"
         onClick={onToggle}
       />
     );

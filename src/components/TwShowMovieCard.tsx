@@ -1,11 +1,12 @@
 // Third Party
-import { ArchiveBoxIcon, EllipsisVerticalIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { Trash, EllipsisVertical, ArchiveX } from "lucide-react";
 import classNames from "classnames";
 // Local
 import { Card } from '@/components/ui/card';
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import TwCircleButton from "./base/TwCircleButton";
+import { CircleIconButton } from "@/components/ui/circle-icon-button";
+
 
 type Props = {
   name: string;
@@ -13,7 +14,7 @@ type Props = {
   deleteable: boolean;
   onDelete: () => void;
   onWatched?: () => void;
-  onRefresh: () => void;
+  onRefresh?: () => void;
   className?: string;
 };
 
@@ -26,11 +27,14 @@ const TwShowMovieCard = (props: Props) => {
   const renderRefreshButton = () => {
     if (props.onRefresh) {
       return (
-        <TwCircleButton
+        <CircleIconButton
           className="absolute bottom-3 right-2 transform-gpu border-none"
-          type="arrow-down-circle"
-          size="xs"
-          onClick={(e) => { e.stopPropagation(); props.onRefresh() }}
+          iconName="arrow-down-circle"
+          sizeClass="h-4 w-4"
+          onClick={(e) => {
+            e.stopPropagation();
+            props.onRefresh();
+          }}
         />
       );
     }
@@ -54,7 +58,7 @@ const TwShowMovieCard = (props: Props) => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <span className="sr-only">Open options</span>
-            <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
+            <EllipsisVertical className="h-5 w-5" aria-hidden="true" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             {props.onWatched ? (
@@ -62,7 +66,7 @@ const TwShowMovieCard = (props: Props) => {
                 variant="ghost"
                 className="w-full"
                 onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.onWatched() }}>
-                <ArchiveBoxIcon className="mr-3 h-5 w-5" aria-hidden="true" /> Watched
+                <ArchiveX className="mr-3 h-5 w-5" aria-hidden="true" /> Watched
               </Button>
             ) : null}
 
@@ -70,7 +74,7 @@ const TwShowMovieCard = (props: Props) => {
               variant="destructive"
               className="w-full"
               onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.onDelete() }}>
-              <TrashIcon className="mr-3 h-5 w-5" aria-hidden="true" /> Delete
+              <Trash className="mr-3 h-5 w-5" aria-hidden="true" /> Delete
             </Button>
           </DropdownMenuContent>
         </DropdownMenu>

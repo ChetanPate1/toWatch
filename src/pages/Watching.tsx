@@ -20,7 +20,6 @@ import { useFetchShowTypesQuery } from '@/app/api/lookups';
 import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
 import { useUpdateShowMutation } from '@/app/api/shows';
 
-
 const Watching = () => {
    const dispatch = useAppDispatch();
    const route = useParams();

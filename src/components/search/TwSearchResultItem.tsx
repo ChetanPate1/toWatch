@@ -1,5 +1,5 @@
 // Local
-import TwCircleButton from "@/components/base/TwCircleButton";
+import { CircleIconButton } from "@/components/ui/circle-icon-button";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
@@ -32,7 +32,7 @@ const TwSearchResultItem = (props: Props) => {
                   <p className="text-slate-200 font-bold mb-2">{props.name}
                      <span className="text-slate-500 text-xs"> {extractYear(props.released || '')}</span>
                   </p>
-                  {props.onAdd ? <TwCircleButton type="plus" size="xs" onClick={props.onAdd} /> : null}
+                  {props.onAdd ? <CircleIconButton iconName="plus" sizeClass="h-4 w-4" onClick={props.onAdd} /> : null}
                </div>
 
                {props.genres?.map((item) => (

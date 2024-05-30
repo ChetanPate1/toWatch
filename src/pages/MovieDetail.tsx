@@ -1,6 +1,6 @@
 // Local
 import TwPageLoader from '@/components/page-loader';
-import TwCircleButton from '@/components/base/TwCircleButton';
+import { CircleIconButton } from '@/components/ui/circle-icon-button';
 import { Badge } from '@/components/ui/badge';
 import { useFetchMovieQuery } from '@/app/api/movies';
 
@@ -40,7 +40,7 @@ const MovieDetail = (props: Props) => {
          <div className="flex items-center px-20 max-w-[750px]">
             <div className="text-left">
                <h1 className="text-3xl font-bold text-white mt-2 relative pl-16">
-                  <TwCircleButton className="absolute left-0 -top-2" type="backward" onClick={props.onBack} />
+                  <CircleIconButton className="absolute left-0 -top-2" iconName="rewind" onClick={props.onBack} />
 
                   {data.title} <span className="text-sm text-slate-500">{data.year}</span>
                </h1>

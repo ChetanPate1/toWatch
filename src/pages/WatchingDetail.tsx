@@ -1,7 +1,7 @@
 // Core
 import { useEffect, useRef, useState } from 'react';
 // Local
-import TwCircleButton from '@/components/base/TwCircleButton';
+import { CircleIconButton } from '@/components/ui/circle-icon-button';
 import { Card } from '@/components/ui/card';
 import TwEpisodeListItem from '@/components/watching/TwEpisodeListItem';
 import TwSeriesButtonSelect from '@/components/watching/TwSeriesButtonSelect';
@@ -104,7 +104,7 @@ const WatchingDetail = (props: Props) => {
          <div className="flex items-center px-20 max-w-[750px]">
             <div className="text-left w-full">
                <h1 className="text-3xl font-bold text-white mt-2 relative pl-16">
-                  <TwCircleButton className="absolute left-0 -top-2" type="backward" onClick={props.onBack} />
+                  <CircleIconButton className="absolute left-0 -top-2" iconName="rewind" onClick={props.onBack} />
 
                   {data?.show?.name} <span className="text-sm text-slate-500">{data.show.premiered.split('-')[0]}</span>
                </h1>

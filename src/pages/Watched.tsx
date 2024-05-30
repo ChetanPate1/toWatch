@@ -17,6 +17,8 @@ import {
 } from '@/app/api/watched-shows';
 import { useAppDispatch, useAppSelector } from '@/app/store';
 import { fetchWatchedShows, fetchWatchedShowsPagination } from '@/app/features/watchedShowSlice';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 
 const Watched = () => {
    const navigate = useNavigate();

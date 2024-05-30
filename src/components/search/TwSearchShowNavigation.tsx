@@ -1,7 +1,7 @@
 // Core
 import { useImperativeHandle, useRef, useState } from "react";
 // Thirt Party
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Search } from "lucide-react";
 // Local
 import TwContainer from "@/components/base/TwContainer";
 import TwLoader from "@/components/base/TwLoader";
@@ -115,7 +115,7 @@ const TwSearchShowNavigation = (props: Props) => {
     <div className="fixed top-0 left-0 w-full py-3 backdrop-blur-md z-[45]">
       <TwContainer className="flex flex-row justify-center !mb-0">
         <div className="flex flex-row items-center">
-          <MagnifyingGlassIcon className="h-4 w-4 text-zinc-500" aria-hidden="true" />
+          <Search className="h-4 w-4 text-zinc-500" aria-hidden="true" />
 
           <button type="button" className="rounded-md px-3 py-5 sm:text-sm text-gray-500" onClick={addShowModal.current.open}>
             Search for a show
