@@ -26,6 +26,7 @@ const WatchingDetail = (props: Props) => {
    useEffect(() => {
       if (showDetails) {
          onSeasonChange(showDetails.episode.season._id);
+         activeEpisode.current = showDetails.episode;
       }
    }, [showDetails]);
 
