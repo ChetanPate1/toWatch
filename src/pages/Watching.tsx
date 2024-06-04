@@ -131,7 +131,7 @@ const Watching = () => {
          <TwSearchShowNavigation reference={searchShow} onAddShow={onAddShow} />
 
          <h1 className="sr-only">Watching</h1>
-         <ModeToggle />
+
          {renderContent()}
          {renderListEnd()}
 
