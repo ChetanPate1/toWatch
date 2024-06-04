@@ -38,9 +38,9 @@ const TwSearchMovieNavigation = (props: Props) => {
     }
   };
 
-  const onChangeSearchText = (value: string) => {
+  const onChangeSearchText = ({ target }) => {
     if (!isLoading) {
-      findMovies(value);
+      findMovies(target.value);
     }
   };
 
@@ -108,11 +108,12 @@ const TwSearchMovieNavigation = (props: Props) => {
       <Base reference={addMovieModal}>
         <h3 className="text-lg font-semibold leading-6 text-gray-400 mb-2">Add a movie</h3>
         <Input
-          className="placeholder-gray-600 text-gray-200 bg-transparent !text-xl !p-0 border-none"
+          className="bg-transparent !text-xl !p-0 border-none"
           id="searchShow"
           type="text"
           placeholder="Search for a movie (Movie, Year)"
           onChange={debouncedOnChange}
+          autoFocus
         />
 
         <div className="mt-3 max-h-[700px] overflow-y-auto">

@@ -32,7 +32,7 @@ const TwSearchResultItem = (props: Props) => {
                   <p className="text-slate-200 font-bold mb-2">{props.name}
                      <span className="text-slate-500 text-xs"> {extractYear(props.released || '')}</span>
                   </p>
-                  {props.onAdd ? <CircleIconButton iconname="plus" sizeClass="h-4 w-4" onClick={props.onAdd} /> : null}
+                  {props.onAdd ? <CircleIconButton iconname="plus" sizeclass="h-4 w-4" onClick={props.onAdd} /> : null}
                </div>
 
                {props.genres?.map((item) => (

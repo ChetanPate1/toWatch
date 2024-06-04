@@ -47,9 +47,9 @@ const TwSearchShowNavigation = (props: Props) => {
     }
   };
 
-  const onChangeSearchText = (value: string) => {
+  const onChangeSearchText = ({ target }) => {
     if (!isLoading) {
-      findShows(value);
+      findShows(target.value);
     }
   };
 
@@ -125,11 +125,12 @@ const TwSearchShowNavigation = (props: Props) => {
 
       <Base reference={addShowModal} title="Track a show" description="Search for a show to begin">
         <Input
-          className="placeholder-gray-600 text-gray-200 bg-transparent !text-xl !p-0 border-none"
+          className="bg-transparent !text-xl !p-0 border-none"
           id="searchShow"
           type="text"
           placeholder="Search for a show"
           onChange={debouncedOnChange}
+          autoFocus
         />
 
         <div className="mt-3 max-h-[700px] overflow-y-auto">

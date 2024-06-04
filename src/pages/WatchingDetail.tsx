@@ -121,7 +121,7 @@ const WatchingDetail = (props: Props) => {
                </div>
 
                <Card className="grid grid-flow-col rounded-full py-0 px-6 mb-2 w-full overflow-x-auto scrollbar-none">
-                  <Tabs defaultValue={activeSeason._id} value={activeSeason._id} onValueChange={(seasonId) => onSeasonChange(seasonId)} className="w-[750px]">
+                  <Tabs defaultValue={activeSeason._id} value={activeSeason._id} onValueChange={(seasonId) => onSeasonChange(seasonId)} className="w-[550px]">
                      <TabsList>
                         {showDetails.show?.seasons.map((s) => (
                            <TabsTrigger key={s._id} value={s._id} className="relative py-4 w-20">
