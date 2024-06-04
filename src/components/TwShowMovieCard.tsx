@@ -58,7 +58,7 @@ const TwShowMovieCard = (props: Props) => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <span className="sr-only">Open options</span>
-            <EllipsisVertical className="h-5 w-5" aria-hidden="true" />
+            <EllipsisVertical className="h-5 w-5 text-white" aria-hidden="true" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             {props.onWatched ? (

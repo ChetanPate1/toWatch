@@ -23,7 +23,7 @@ const Empty = (props: Props) => (
          </svg>
 
          <div className="flex flex-col items-center">
-            <p className="text-center text-neutral-200 mb-10">{props.message}</p>
+            <p className="text-center text-neutral-800 mb-10">{props.message}</p>
 
             <Button onClick={props.onClick}>
                <PlusIcon className="mr-2 h-4 w-4 text-white" /> {props.buttonName}
