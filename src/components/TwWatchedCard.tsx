@@ -80,8 +80,8 @@ const TwWatchedCard = (props: Props) => {
       <h5 className="w-full text-sm text-white tracking-wide font-semibold mt-1 text-nowrap text-ellipsis pr-4 overflow-hidden"
         title={props.name}>{props.name}</h5>
 
-      <p className="text-sm text-gray-400 mb-1">{formatOn(props.on)}</p>
-      <p className="text-xs text-gray-400 mb-2 text-nowrap text-ellipsis pr-4 overflow-hidden"
+      <p className="text-sm text-gray-700 mb-1">{formatOn(props.on)}</p>
+      <p className="text-xs text-gray-600 mb-2 text-nowrap text-ellipsis pr-4 overflow-hidden"
         title={props.on.name}>{props.on.name}</p>
 
       <Progress className="h-[5px]" value={props.percentage} max={100} />

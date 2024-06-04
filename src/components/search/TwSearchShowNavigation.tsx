@@ -125,7 +125,7 @@ const TwSearchShowNavigation = (props: Props) => {
 
       <Base reference={addShowModal} title="Track a show" description="Search for a show to begin">
         <Input
-          className="bg-transparent !text-xl !p-0 border-none"
+          className="bg-transparent !text-xl !p-0 border-none focus-visible:ring-0"
           id="searchShow"
           type="text"
           placeholder="Search for a show"

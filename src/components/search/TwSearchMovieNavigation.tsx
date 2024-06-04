@@ -108,7 +108,7 @@ const TwSearchMovieNavigation = (props: Props) => {
       <Base reference={addMovieModal}>
         <h3 className="text-lg font-semibold leading-6 text-gray-400 mb-2">Add a movie</h3>
         <Input
-          className="bg-transparent !text-xl !p-0 border-none"
+          className="bg-transparent !text-xl !p-0 border-none focus-visible:ring-0"
           id="searchShow"
           type="text"
           placeholder="Search for a movie (Movie, Year)"

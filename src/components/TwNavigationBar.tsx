@@ -48,7 +48,7 @@ const TwNavigationBar = () => {
                 <>
                   {item.icon}
                   <span className="sr-only">{item.name}</span>
-                  <span className={`absolute h-1 w-full sm:h-full sm:w-1 rounded-full top-0 sm:-right-[1px] bg-primary  transition-transform duration-300 scale-y-0 group-hover:scale-y-100 ${isActive ? 'scale-y-100' : ''}`}></span>
+                  <span className={`absolute h-1 w-full sm:h-full sm:w-1 rounded-full top-0 sm:-right-[1px] bg-black transition-transform duration-300 scale-y-0 group-hover:scale-y-100 ${isActive ? 'scale-y-100' : ''}`}></span>
                 </>
               )}
             </NavLink>
