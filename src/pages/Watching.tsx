@@ -10,7 +10,7 @@ import TwSearchShowNavigation from '@/components/search/TwSearchShowNavigation';
 import Empty from '@/components/empty';
 import TwPageLoader from '@/components/page-loader';
 import TwReachedEnd from '@/components/reached-end';
-import FullScreen from '@/components/modals/FullScreen';
+import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { toast } from '@/components/ui/use-toast';
 import WatchingDetail from '@/pages/WatchingDetail';
 
@@ -27,8 +27,8 @@ const Watching = () => {
    const confirmModal = useRef({});
    const selectedShow = useRef();
    const searchShow = useRef({});
-   const watchingDetail = useRef({});
    const [watchingId, setWatchingId] = useState('');
+   const [open, setOpen] = useState(false);
    const [updateShow] = useUpdateShowMutation();
    const { data: showTypes } = useFetchShowTypesQuery(null);
    const [deleteShowFromWatching] = useDeleteShowFromWatchingMutation();
@@ -59,7 +59,7 @@ const Watching = () => {
 
    const onWatchingDetail = (watchingId: string) => {
       setWatchingId(watchingId);
-      watchingDetail.current.open();
+      setOpen(true);
    };
 
    const onRefresh = (showId: string) => {
@@ -137,9 +137,11 @@ const Watching = () => {
             onConfirm={() => onConfirmDelete(selectedShow.current)}
          />
 
-         <FullScreen reference={watchingDetail}>
-            <WatchingDetail watchingId={watchingId} onBack={watchingDetail.current.close} />
-         </FullScreen>
+         <Drawer shouldScaleBackground open={open} onOpenChange={setOpen}>
+            <DrawerContent className="bg-black/30 backdrop-blur-lg border-none">
+               <WatchingDetail watchingId={watchingId} onBack={() => setOpen(false)} />
+            </DrawerContent>
+         </Drawer>
       </TwContainer>
    );
 };

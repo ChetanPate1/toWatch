@@ -99,13 +99,13 @@ const WatchingDetail = (props: Props) => {
 
    return (
       <div className="flex">
-         <div className="flex justify-center items-center relative h-screen w-1/2 overflow-hidden" style={{ backgroundImage: `url(${showDetails.show?.image.original})`, backgroundPosition: '50% 50%', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+         <div className="flex justify-center items-center relative h-screen max-h-[900px] w-1/2 overflow-hidden" style={{ backgroundImage: `url(${showDetails.show?.image.original})`, backgroundPosition: '50% 50%', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
             <img
                src={showDetails.show?.image.original}
                alt={showDetails.show?.name}
                className="max-w-lg rounded-3xl absolute z-20"
             />
-            <div className="absolute top-0 left-0 w-[99.2%] h-full bg-neutral-100 dark:bg-neutral-900 opacity-90 z-10"></div>
+            <div className="absolute top-0 left-0 w-[99.2%] h-full bg-neutral-900 opacity-90 z-10"></div>
          </div>
 
          <div className="flex items-center px-20 w-full max-w-[750px]">

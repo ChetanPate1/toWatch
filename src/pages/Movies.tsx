@@ -8,20 +8,19 @@ import Empty from '@/components/empty';
 import TwReachedEnd from '@/components/reached-end';
 import TwSearchMovieNavigation from '@/components/search/TwSearchMovieNavigation';
 import TwPageLoader from '@/components/page-loader';
-import FullScreen from '@/components/modals/FullScreen';
 import MovieDetail from '@/pages/MovieDetail';
 
 import { useDeleteMovieFromCollectionMutation } from '@/app/api/movies';
 import { fetchMovieCollection, fetchMovieCollectionPagination } from '@/app/features/movieSlice';
 import { useAppDispatch, useAppSelector } from '@/app/store';
-
+import { Drawer, DrawerContent } from '@/components/ui/drawer';
 
 const Movies = () => {
    const confirmModal = useRef({});
    const selectedMovie = useRef();
-   const movieDetail = useRef({});
    const searchMovie = useRef({});
    const [movieId, setMovieId] = useState('');
+   const [open, setOpen] = useState(false);
    const dispatch = useAppDispatch();
    const { list, currentPage, totalPages, isFetching } = useAppSelector((state) => state.movie);
    const [deleteMovieFromCollection] = useDeleteMovieFromCollectionMutation();
@@ -46,7 +45,7 @@ const Movies = () => {
 
    const onMovieDetail = (movieId: string) => {
       setMovieId(movieId);
-      movieDetail.current.open();
+      setOpen(true);
    };
 
    const renderContent = () => {
@@ -108,9 +107,11 @@ const Movies = () => {
             onConfirm={() => onConfirmDelete(selectedMovie.current)}
          />
 
-         <FullScreen reference={movieDetail}>
-            <MovieDetail movieId={movieId} onBack={movieDetail.current.close} />
-         </FullScreen>
+         <Drawer shouldScaleBackground open={open} onOpenChange={setOpen}>
+            <DrawerContent className="bg-black/30 backdrop-blur-lg border-none">
+               <MovieDetail movieId={movieId} onBack={() => setOpen(false)} />
+            </DrawerContent>
+         </Drawer>
       </TwContainer>
    );
 };
