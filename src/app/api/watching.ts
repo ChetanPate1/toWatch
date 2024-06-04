@@ -4,9 +4,8 @@ const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const watchingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    fetchShowDetails: builder.mutation({
+    fetchShowDetails: builder.query({
       query: (watchingId) => ({
-        method: "GET",
         url: `${apiUrl}/watchings/${watchingId}`,
       }),
     }),
@@ -45,7 +44,7 @@ export const watchingApi = apiSlice.injectEndpoints({
 });
 
 export const {
-  useFetchShowDetailsMutation,
+  useFetchShowDetailsQuery,
   useAddShowToWatchingMutation,
   useDeleteShowFromWatchingMutation,
   useToggleWatchingShowEpisodeMutation,

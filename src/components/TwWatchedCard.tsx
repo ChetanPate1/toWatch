@@ -89,15 +89,15 @@ const TwWatchedCard = (props: Props) => {
       {props.percentage == 100 ? (
         <CircleIconButton
           className="absolute bottom-3 right-[55px] transform-gpu"
-          iconName="refresh"
-          sizeClass="h-4 w-4"
+          iconname="refresh"
+          sizeclass="h-4 w-4"
           onClick={props.onRewatch}
         />
       ) : null}
       <CircleIconButton
         className="absolute bottom-3 right-2 transform-gpu"
-        iconName="play"
-        sizeClass="h-4 w-4"
+        iconname="play"
+        sizeclass="h-4 w-4"
         onClick={props.onContinue}
       />
     </Card>

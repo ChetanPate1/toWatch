@@ -5,48 +5,48 @@ import { ArrowDownCircle, Check, Eye, Play, Plus, Rewind, Trash, RefreshCcw, Rot
 import { Button, ButtonProps } from '@/components/ui/button';
 
 interface Props extends ButtonProps {
-  iconName?: 'plus' | 'refresh' | 'trash' | 'play' | 'reload' | 'eye' | 'rewind' | 'check' | 'arrow-down-circle';
-  sizeClass?: string;
+  iconname?: 'plus' | 'refresh' | 'trash' | 'play' | 'reload' | 'eye' | 'rewind' | 'check' | 'arrow-down-circle';
+  sizeclass?: string;
   onClick?: () => void;
   className?: string;
 }
 
 const CircleIconButton = (props: Props) => {
-  const { iconName = 'Plus', sizeClass = 'h-6 w-6', onClick = () => { }
+  const { iconname = 'Plus', sizeclass = 'h-4 w-4', onClick = () => { }
   } = props;
 
   const classes = classNames(
-    'rounded-full drop-shadow-xl p-3 inline-flex items-center',
+    'rounded-full',
     props.className
   );
 
   const renderIcon = () => {
-    switch (iconName) {
+    switch (iconname) {
       case 'plus':
-        return <Plus className={sizeClass} aria-hidden="true" />;
+        return <Plus className={sizeclass} aria-hidden="true" />;
       case 'refresh':
-        return <RefreshCcw className={sizeClass} aria-hidden="true" />;
+        return <RefreshCcw className={sizeclass} aria-hidden="true" />;
       case 'trash':
-        return <Trash className={sizeClass} aria-hidden="true" />;
+        return <Trash className={sizeclass} aria-hidden="true" />;
       case 'play':
-        return <Play className={sizeClass} aria-hidden="true" />;
+        return <Play className={sizeclass} aria-hidden="true" />;
       case 'reload':
-        return <RotateCcw className={sizeClass} aria-hidden="true" />;
+        return <RotateCcw className={sizeclass} aria-hidden="true" />;
       case 'eye':
-        return <Eye className={sizeClass} aria-hidden="true" />;
+        return <Eye className={sizeclass} aria-hidden="true" />;
       case 'rewind':
-        return <Rewind className={sizeClass} aria-hidden="true" />;
+        return <Rewind className={sizeclass} aria-hidden="true" />;
       case 'check':
-        return <Check className={sizeClass} aria-hidden="true" />;
+        return <Check className={sizeclass} aria-hidden="true" />;
       case 'arrow-down-circle':
-        return <ArrowDownCircle className={sizeClass} aria-hidden="true" />;
+        return <ArrowDownCircle className={sizeclass} aria-hidden="true" />;
       default:
-        return <Plus className={sizeClass} aria-hidden="true" />;
+        return <Plus className={sizeclass} aria-hidden="true" />;
     }
   };
 
   return (
-    <Button {...props} onClick={onClick}>
+    <Button size="icon" {...props} className={classes} onClick={onClick}>
       {renderIcon()}
     </Button>
   );

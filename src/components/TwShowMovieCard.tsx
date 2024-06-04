@@ -29,8 +29,8 @@ const TwShowMovieCard = (props: Props) => {
       return (
         <CircleIconButton
           className="absolute bottom-3 right-2 transform-gpu border-none"
-          iconName="arrow-down-circle"
-          sizeClass="h-4 w-4"
+          iconname="arrow-down-circle"
+          sizeclass="h-4 w-4"
           onClick={(e) => {
             e.stopPropagation();
             props.onRefresh();

@@ -146,7 +146,9 @@ const TwSearchShowNavigation = (props: Props) => {
           summary={selectedShow.summary}
         />
 
-        <h3 className="text-lg font-semibold leading-6 text-gray-400 mt-5 mb-4">Where should we start?</h3>
+        <h3 className="text-lg font-semibold leading-6 text-gray-400 mt-5 mb-4">
+          Where should we start?
+        </h3>
         <div className="text-gray-300">
           <Card className="rounded-full py-0 px-6 mb-2 flex max-w-full overflow-y-auto">
             <TwSeriesButtonSelect
