@@ -20,9 +20,7 @@ const App = () => {
    }, []);
 
    if (ready) {
-      return (
-         <RouterProvider router={router} />
-      );
+      return <RouterProvider router={router} />;
    }
 
    return null;

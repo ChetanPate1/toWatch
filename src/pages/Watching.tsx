@@ -19,6 +19,7 @@ import { useDeleteShowFromWatchingMutation } from "@/app/api/watching";
 import { useFetchShowTypesQuery } from '@/app/api/lookups';
 import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
 import { useUpdateShowMutation } from '@/app/api/shows';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const Watching = () => {
    const dispatch = useAppDispatch();
@@ -126,11 +127,11 @@ const Watching = () => {
    };
 
    return (
-      <TwContainer className="mt-24">
+      <TwContainer>
          <TwSearchShowNavigation reference={searchShow} onAddShow={onAddShow} />
 
          <h1 className="sr-only">Watching</h1>
-
+         <ModeToggle />
          {renderContent()}
          {renderListEnd()}
 

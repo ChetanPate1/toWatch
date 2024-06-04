@@ -109,7 +109,7 @@ const Watched = () => {
    };
 
    return (
-      <TwContainer className="mt-24">
+      <TwContainer>
          <TwSearchShowNavigation reference={searchShow} onAddShow={() => { }} />
 
          <h1 className="sr-only">Watched</h1>

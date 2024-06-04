@@ -15,7 +15,7 @@ const MostPopular = () => {
    }, []);
 
    return (
-      <TwContainer className="mt-9">
+      <TwContainer>
          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
             {shows.map((show) => (
                <TwShowMovieCard

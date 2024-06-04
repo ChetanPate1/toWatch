@@ -94,7 +94,7 @@ const Movies = () => {
    };
 
    return (
-      <TwContainer className="mt-24">
+      <TwContainer>
          <TwSearchMovieNavigation reference={searchMovie} onAddMovie={(movie) => { }} />
          <h1 className="sr-only">Movies</h1>
 

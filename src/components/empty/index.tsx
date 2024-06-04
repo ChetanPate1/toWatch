@@ -26,7 +26,7 @@ const Empty = (props: Props) => (
             <p className="text-center text-neutral-800 mb-10">{props.message}</p>
 
             <Button onClick={props.onClick}>
-               <PlusIcon className="mr-2 h-4 w-4 text-white" /> {props.buttonName}
+               <PlusIcon className="mr-2 h-4 w-4" /> {props.buttonName}
             </Button>
          </div>
       </div>
