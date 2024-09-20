@@ -125,7 +125,7 @@ const TwSearchShowNavigation = (props: Props) => {
 
       <Base reference={addShowModal} title="Track a show" description="Search for a show to begin">
         <Input
-          className="bg-transparent !text-xl !p-0 border-none focus-visible:ring-0"
+          className="bg-transparent dark:text-neutral-100 !text-xl border-none"
           id="searchShow"
           type="text"
           placeholder="Search for a show"
@@ -133,7 +133,7 @@ const TwSearchShowNavigation = (props: Props) => {
           autoFocus
         />
 
-        <div className="mt-3 max-h-[700px] overflow-y-auto">
+        <div className="mt-3 max-h-[650px] overflow-y-auto scrollbar-none">
           {renderShowList()}
         </div>
       </Base>

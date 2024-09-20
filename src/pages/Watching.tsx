@@ -19,7 +19,6 @@ import { useDeleteShowFromWatchingMutation } from "@/app/api/watching";
 import { useFetchShowTypesQuery } from '@/app/api/lookups';
 import { fetchWatching, fetchWatchingPagination } from '@/app/features/watchingSlice';
 import { useUpdateShowMutation } from '@/app/api/shows';
-import { ModeToggle } from '@/components/mode-toggle';
 
 const Watching = () => {
    const dispatch = useAppDispatch();

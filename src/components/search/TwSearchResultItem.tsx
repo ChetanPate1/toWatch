@@ -40,7 +40,7 @@ const TwSearchResultItem = (props: Props) => {
                ))}
 
                <div className="relative mb-4">
-                  <div className="text-slate-400 text-xs mt-5 pb-6 h-[80px] overflow-y-scroll" dangerouslySetInnerHTML={{ __html: props?.summary }}></div>
+                  <div className="text-slate-400 text-xs mt-5 pb-6 h-[80px] overflow-y-scroll scrollbar-none" dangerouslySetInnerHTML={{ __html: props?.summary }}></div>
                   <div className="absolute bottom-0 left-0 w-full h-6 bg-gradient-to-t from-white dark:from-neutral-950 pointer-events-none"></div>
                </div>
             </div>

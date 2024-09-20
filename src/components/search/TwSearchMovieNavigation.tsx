@@ -116,7 +116,7 @@ const TwSearchMovieNavigation = (props: Props) => {
           autoFocus
         />
 
-        <div className="mt-3 max-h-[700px] overflow-y-auto">
+        <div className="mt-3 max-h-[650px] overflow-y-auto scrollbar-none">
           {renderMovie()}
         </div>
       </Base>
