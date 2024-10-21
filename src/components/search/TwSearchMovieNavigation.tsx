@@ -109,7 +109,7 @@ const TwSearchMovieNavigation = (props: Props) => {
         <h3 className="text-lg font-semibold leading-6 text-gray-400 mb-2">Add a movie</h3>
         <Input
           className="bg-transparent dark:text-neutral-100 !text-xl border-none"
-          id="searchShow"
+          id="searchMovie"
           type="text"
           placeholder="Search for a movie (Movie, Year)"
           onChange={debouncedOnChange}
