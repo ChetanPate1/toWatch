@@ -36,8 +36,8 @@ jobs:
           node-version: 18
       - run: |
           touch .env
-          for secret in $(jq -r 'keys[]' <<< '${{ toJSON(secrets) }}'); do
-            echo "${secret}=${!secret}" >> .env
+          for secret in $(jq -r 'keys[]' <<< '${{ toJSON(env) }}'); do
+            echo "${env}=${!env}" >> .env
           done
       - run: npm ci
       - run: npm run build
