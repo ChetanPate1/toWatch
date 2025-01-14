@@ -8,7 +8,7 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -36,16 +36,12 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Create .env file
-        run: |
-          # Create production env.production file
-          touch .env
-          # Dynamically add all VITE_ prefixed Vars
-          for var in $(jq -r 'keys[]' <<< '${{ toJSON(vars) }}'); do
-            if [[ $var == VITE_* ]]; then
-              echo "${var}=${!var}" >> .env.production
-            fi
-          done
+      - name: Load .env file
+        env:
+          VITE_APP_API_URL: ${{ vars.VITE_APP_API_URL }}
+          VITE_APP_OMDB_API_KEY: ${{ vars.VITE_APP_OMDB_API_KEY }}
+          VITE_APP_OMDB_API_URL: ${{ vars.VITE_APP_OMDB_API_URL }}
+          VITE_APP_TVMAZE_API_URL: ${{ vars.VITE_APP_TVMAZE_API_URL }}
       - run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
