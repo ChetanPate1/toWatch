@@ -30,11 +30,10 @@ jobs:
     steps:
       - name: Checkout
         uses: 'actions/checkout@v4'
-      - name: Setup Node
+      - name: Setup Node & Create .env file
         uses: 'actions/setup-node@v4'
         with:
           node-version: 18
-      - name: Create .env file
       - run: |
           touch .env
           for secret in $(jq -r 'keys[]' <<< '${{ toJSON(secrets) }}'); do
