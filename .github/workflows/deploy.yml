@@ -30,19 +30,25 @@ jobs:
     steps:
       - name: Checkout
         uses: 'actions/checkout@v4'
-      - name: Create .env file
-        run: |
-          touch .env
-          echo "${{env.VITE_APP_API_URL}}" >> .env
-
-      - name: Test printing your secret (Remove this step in production)
-        run: |
-            cat .env
       - name: Setup Node
         uses: 'actions/setup-node@v4'
         with:
           node-version: 18
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
+      - name: Create .env file
+        run: |
+          # Create production env file
+          echo "VITE_APP_TITLE=${{ vars.VITE_APP_TITLE }}" > .env
+          
+          # Dynamically add all VITE_ prefixed secrets
+          for var in $(jq -r 'keys[]' <<< '${{ toJSON(vars) }}'); do
+            if [[ $var == VITE_* ]]; then
+              echo "${var}=${!var}" >> .env
+            fi
+          done
+        env: ${{ toJSON(vars) }}
+      
       - run: npm run build
 
       - name: Setup Pages
