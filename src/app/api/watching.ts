@@ -2,8 +2,6 @@
 import { apiSlice } from './';
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
-console.log({ apiUrl });
-
 export const watchingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     fetchShowDetails: builder.query({
