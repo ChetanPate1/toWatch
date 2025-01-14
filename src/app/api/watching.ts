@@ -1,46 +1,48 @@
 // Local
-import { apiSlice } from "./";
+import { apiSlice } from './';
 const apiUrl = import.meta.env.VITE_APP_API_URL;
+
+console.log({ apiUrl });
 
 export const watchingApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     fetchShowDetails: builder.query({
       query: (watchingId) => ({
-        url: `${apiUrl}/watchings/${watchingId}`,
-      }),
+        url: `${apiUrl}/watchings/${watchingId}`
+      })
     }),
     addShowToWatching: builder.mutation({
       query: ({ showId, episodeId }) => ({
         url: `${apiUrl}/watchings`,
-        method: "POST",
-        body: { showId, episodeId },
-      }),
+        method: 'POST',
+        body: { showId, episodeId }
+      })
     }),
     deleteShowFromWatching: builder.mutation({
       query: ({ id, showTypeId }) => ({
         url: `${apiUrl}/watchings/${id}`,
-        method: "DELETE",
-        body: { showTypeId },
-      }),
+        method: 'DELETE',
+        body: { showTypeId }
+      })
     }),
     toggleWatchingShowEpisode: builder.mutation({
       query: ({ watchingId, episodeId }) => ({
         url: `${apiUrl}/watchings/${watchingId}/watched/${episodeId}`,
-        method: "POST",
-      }),
+        method: 'POST'
+      })
     }),
     fetchWatchingShowEpisodeTags: builder.query({
       query: (episode) => ({
-        url: `${apiUrl}/episode-tags/${episode._id}/tag`,
-      }),
+        url: `${apiUrl}/episode-tags/${episode._id}/tag`
+      })
     }),
     toggleWatchingShowEpisodeTag: builder.mutation({
       query: ({ episodeId, tagId }) => ({
         url: `${apiUrl}/episode-tags/${episodeId}/tag/${tagId}`,
-        method: "POST",
-      }),
-    }),
-  }),
+        method: 'POST'
+      })
+    })
+  })
 });
 
 export const {
@@ -49,5 +51,5 @@ export const {
   useDeleteShowFromWatchingMutation,
   useToggleWatchingShowEpisodeMutation,
   useFetchWatchingShowEpisodeTagsQuery,
-  useToggleWatchingShowEpisodeTagMutation,
+  useToggleWatchingShowEpisodeTagMutation
 } = watchingApi;
