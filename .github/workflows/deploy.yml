@@ -39,8 +39,7 @@ jobs:
       - name: Create .env file
         run: |
           # Create production env file
-          echo "VITE_APP_TITLE=${{ vars.VITE_APP_TITLE }}" > .env
-          
+          touch .env
           # Dynamically add all VITE_ prefixed secrets
           for var in $(jq -r 'keys[]' <<< '${{ toJSON(vars) }}'); do
             if [[ $var == VITE_* ]]; then
