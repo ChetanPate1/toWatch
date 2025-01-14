@@ -47,7 +47,6 @@ jobs:
               echo "${var}=${!var}" >> .env
             fi
           done
-        env: ${{ toJSON(vars) }}
       
       - run: npm run build
 
