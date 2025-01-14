@@ -39,6 +39,7 @@ jobs:
           for secret in $(jq -r 'keys[]' <<< '${{ toJSON(env) }}'); do
             echo "${env}=${!env}" >> .env
           done
+        env: ${{ toJSON(secrets) }}
       - run: npm ci
       - run: npm run build
 
