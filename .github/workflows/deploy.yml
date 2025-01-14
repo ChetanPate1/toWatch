@@ -8,9 +8,6 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-env:
-  VITE_INTERNAL: true
   
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -33,7 +30,15 @@ jobs:
     steps:
       - name: Checkout
         uses: 'actions/checkout@v4'
-      - name: Setup Node & Create .env file
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "${{env.VITE_APP_API_URL}}" >> .env
+
+      - name: Test printing your secret (Remove this step in production)
+        run: |
+            cat .env
+      - name: Setup Node
         uses: 'actions/setup-node@v4'
         with:
           node-version: 18
