@@ -40,12 +40,13 @@ jobs:
         run: |
           # Create production env file
           touch .env
-          # Dynamically add all VITE_ prefixed secrets
+          # Dynamically add all VITE_ prefixed Vars
           for var in $(jq -r 'keys[]' <<< '${{ toJSON(vars) }}'); do
             if [[ $var == VITE_* ]]; then
               echo "${var}=${!var}" >> .env
             fi
           done
+          source .env
       
       - run: npm run build
 
