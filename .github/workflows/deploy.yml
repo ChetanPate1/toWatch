@@ -38,16 +38,14 @@ jobs:
         run: npm ci
       - name: Create .env file
         run: |
-          # Create production env file
+          # Create production env.production file
           touch .env
           # Dynamically add all VITE_ prefixed Vars
           for var in $(jq -r 'keys[]' <<< '${{ toJSON(vars) }}'); do
             if [[ $var == VITE_* ]]; then
-              echo "${var}=${!var}" >> .env
+              echo "${var}=${!var}" >> .env.production
             fi
           done
-          source .env
-      
       - run: npm run build
 
       - name: Setup Pages
