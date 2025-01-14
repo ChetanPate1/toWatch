@@ -21,6 +21,13 @@ concurrency:
   group: 'pages'
   cancel-in-progress: false
 
+# Load environment variables file
+env:
+  VITE_APP_API_URL: ${{ vars.VITE_APP_API_URL }}
+  VITE_APP_OMDB_API_KEY: ${{ vars.VITE_APP_OMDB_API_KEY }}
+  VITE_APP_OMDB_API_URL: ${{ vars.VITE_APP_OMDB_API_URL }}
+  VITE_APP_TVMAZE_API_URL: ${{ vars.VITE_APP_TVMAZE_API_URL }}
+
 jobs:
   deploy:
     environment:
@@ -34,9 +41,8 @@ jobs:
         uses: 'actions/setup-node@v4'
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run build
-
+      - name: Install dependencies
+        run: npm ci && npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
